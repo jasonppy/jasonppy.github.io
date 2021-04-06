@@ -2,6 +2,9 @@
 title: "Deep RL 2 Imitation Learning"
 date: 2021-04-06
 categories: DeepRL
+tags:
+  - RL
+  - notes
 ---
 The framework of imitation learning tackles reinforcement learning as a supervised learning problem.
 
