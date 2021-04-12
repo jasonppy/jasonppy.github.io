@@ -11,28 +11,17 @@ The framework of imitation learning tackles reinforcement learning as a supervis
 ## 1 Some Basic Notations and Terminologies
 $$\begin{eqnarray*}
 &&o_t: \text{observation at time }t \\
-&&s_t: \text{state at time }t \\
 &&a_t: \text{action at time }t \\
 &&\pi(a_t\mid o_t): \text{policy, a distribution over actions }a_t\text{ given observation }o_t \\
-&&p(s_{t+1}\mid s_t, a_t): \text{transition probabilities or dynamics or model} \\
-&&p(o_t\mid s_t, a_t): \text{conditional observation probabilities}
+&&p(o_t, a_t): \text{ marginal distribution of observation and action at time step } t \\
 \end{eqnarray*}$$
 
 **More on policy $$\pi$$**
 
 When  $$\pi(a_t\mid o_t)$$ is a delta function, it’s a deterministic mapping from observation space to action space. In many cases we want to parameterize $$\pi$$ by a neural net, and optimize the some objective to improve the policy. For example, when the action space is discrete, we can let $$\pi_{\theta}(a_t\mid o_t)= \text{Cat}(\alpha_{\theta}(o_t))$$ and the neural net produces probabilities/logits of each category $$(\alpha_{\theta}(o_t))$$; when the action space is continuous,  we can let $$\pi_{\theta}(a_t\mid o_t) = \mathcal{N}(\mu_{\theta}(o_t),\Sigma_{\theta}(o_t))$$ and the neural network produces mean and variance of the Gaussian distribution.
 
-Sometimes we use  instead, which is a more restrictive special case, comparing to . Because state is usually assumed to be Markovian, i.e. , but we don’t pose such assumption on .
 
-An illustrative example os $$o_t$$ and $$s_t$$ (Figures are all from [CS285](http://rail.eecs.berkeley.edu/deeprlcourse/) unless otherwise pointed out.):
-<div align='center'><img src="../assets/images/285-2-os.png" alt="o and s" width="500"></div>
-
-A graphical model that shows the causal relationship of different quantities:
-<div align='center'><img src="../assets/images/285-2-markov.png" alt="markov" width="700"></div>
-
-
-
-## 2 Train a policy by supervised learning
+## 2 Train a Policy by Supervised Learning
 
 Suppose we want to train an agent to drive a car autonomously, in imitation learning framework, we first collect data $$\{(o_t,a_t)\}$$ from human drivers, where ’s are the images from the car’s camera and ’s are the driver’s behaviors. We then parameterize policy $$\pi_{\theta}(a_t\mid o_t)$$ by a neural network which takes in observation $$o_t$$ and output action $$\hat{a}_t$$. We want the neural net policy to act as close to human as possible, and therefore optimize the following objective:
 
@@ -42,8 +31,8 @@ $$\begin{equation}\label{eq:orig}
  
 where $$\mathcal{L}$$ can be mean square error (continuous action space), cross entropy (discrete action space) etc.
 
-But this approach doesn't really work and the reason is that when the agent takes actions based on $$\pi_{\theta}(a_t\mid o_t)$$, as time goes on, the observations $${\pmb o} := (o_1, o_2, \cdots, o_t)$$ can be very different than the trajectories in the training data and then it's almost impossible for the learned policy $$\pi_{\theta}$$ to be reliable because it has never seen the similar situations before.
-<div align='center'><img src="../assets/images/285-2-diviate.png" alt="diviate" width="700"></div>
+But this approach doesn't really work and the reason is that when the agent takes actions based on $$\pi_{\theta}(a_t\mid o_t)$$, as time goes on, the observations $${\pmb o} := (o_1, o_2, \cdots, o_t)$$ can be very different than the trajectories in the training data and then it's almost impossible for the learned policy $$\pi_{\theta}$$ to be reliable because it has never seen the similar situations before. (Figures are all from [CS285](http://rail.eecs.berkeley.edu/deeprlcourse/) (some are modified) unless otherwise pointed out)
+<div align='center'><img src="../assets/images/285-2-diviate-2.png" alt="diviate" width="700"></div>
 
 One solution to this issue is to modify the data to introduce small mistakes and corrections, and therefore show the agent how to behave when it make small mistakes. For an example, see [this](https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf) NVIDIA paper.
 
@@ -70,7 +59,7 @@ For an example of using DAgger to fly drones, please see [Ross. et al. '12](http
 ### 3.2 Theoretical analysis of DAgger
 Now let do some analysis of this algorithm! The analysis follows [lecture 2](http://rail.eecs.berkeley.edu/deeprlcourse/static/slides/lec-2.pdf) where they replaced observation $$o_t$$ by state $$s_t$$ everywhere, this is a bit strange, and my guess is that there are really used interchangeably in this lecture, in future lectures, observations are much less seen. Here we will stick to $$\pi_{\theta}(a_t\mid o_t)$$
 
-Assume human decision or optimal policy is $$\pi^*(o_t)$$ (which does not has to be deterministic, it can be a set that contains the decisions that human make given observation $$o_t$$, here fore brevity we treat it as deterministic), and the cost $$c_t(o_t, a_t)$$ is binary:
+Assume human decision or optimal policy is $$\pi^*(o_t)$$ (which does not has to be deterministic, it can be a set that contains the decisions that human make given observation $$o_t$$, here fore brevity we treat it as deterministic), and the cost $$c(o_t, a_t)$$ is binary:
 
 $$\begin{equation}\label{eq:cost_fn}c(o_t, a_t) = 
 \begin{cases}
@@ -81,7 +70,7 @@ $$\begin{equation}\label{eq:cost_fn}c(o_t, a_t) =
 
 
 Our goal is to find $$\theta^*$$ such that it minimizes
-$$\begin{equation}\label{eq:goal} \mathbb{E}_{p(o_t\mid o_{1:t-1}, a_{t-1}), \pi_{\theta}(a_t\mid o_t)}\sum_t c(o_t, a_t) \end{equation}$$
+$$\begin{equation}\label{eq:goal} \mathbb{E}_{(o_t, a_t) \sim p_{\theta}(o_t, a_t)}\sum_t c(o_t, a_t) \end{equation}$$
 
 By running DAgger, we assume $$\pi_{\theta}(a_t\mid o_t)\rightarrow \pi_{\text{train}}(a_t\mid o_t)$$, therefore the joint distribution $$p_{\theta}(o_t, a_t) \rightarrow p_{\text{train}}(o_t, a_t)$$. Mathematically, we assume
 
@@ -105,7 +94,7 @@ $$\begin{eqnarray}\label{eq:p_dist2} &&\left|p_{\theta}(o_t, a_t) - p_{\text{tra
 Now, lets bound the inference cost, i.e. our goal equation $$\ref{eq:goal}$$
 
 $$\begin{eqnarray}\label{eq:cost_bound}
-&&\mathbb{E}_{p(o_t\mid o_{1:t-1}, a_{t-1}), \pi_{\theta}(a_t\mid o_t)}\sum_t  c(o_t, a_t) \\ &=& \sum_t \mathbb{E}_{p_{\theta}(o_t, a_t)}c(o_t, a_t) \\
+&&\mathbb{E}_{(o_t, a_t) \sim p_{\theta}(o_t, a_t)}\sum_t  c(o_t, a_t) \\ &=& \sum_t \mathbb{E}_{p_{\theta}(o_t, a_t)}c(o_t, a_t) \\
 &=& \sum_t\sum_{o_t}p_{\theta}(o_t, a_t)c(o_t) \\
 &\leq& \sum_t\sum_{o_t}p_{\text{train}}(o_t)c(o_t, a_t) + \left| p_{\theta}(o_t, a_t) - p_{\text{train}}(o_t) \right|c_{\text{max}} \\
 &\leq& \sum_t \mathbb{E}_{p_{\text{train}}(o_t,a_t)}c(o_t, a_t) + \left| p_{\theta}(o_t, a_t) - p_{\text{train}}(o_t) \right|c_{\text{max}} \\
@@ -116,7 +105,7 @@ $$\begin{eqnarray}\label{eq:cost_bound}
 
 
 
-## 4 Better policy: Non-markovian policy and multimodal policy
+## 4 Better Policy: Non-markovian Policy and Multimodal Policy
 To solve the distribution shift problem, i.e. $$p_{\theta}(o_t, a_t)$$ versus $$p_{train}(o_t, a_t)$$, DAgger makes state sequence in training trajectory close to the state sequence during inference time (the state sequence we will encounter when acting based on the learn policy). Instead, we can improve the policy itself that such $$\pi_{\theta}(a_t\mid o_t)$$ is very close to $$\pi^*(a_t\mid o_t$$. For inspiration of what to improve, we consider the potential issue of using a conventional neural net (e.g. a CNN) as $$\pi_{\theta}$$.
 
 ### 4.1 make decisions based on only current observation
@@ -144,7 +133,7 @@ To get away with this exponential explosion problem, we use factor the distribut
 
 *To be continued...*
 
-## 5 Few shot imitation learning
+## 5 Few Shot Imitation Learning
 
 [Goal conditioned behavior cloning](https://www.youtube.com/watch?v=nM9f-5oQ86Y&list=PL_iWQOsE6TfURIIhCrlt-wj9ByIVpbfGc&index=10). example: [learning latent plans from play](file:///Users/jason/Zotero/storage/5E7EMYV5/learning-from-play.github.io.html)
 
