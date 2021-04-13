@@ -169,8 +169,68 @@ $$\begin{equation} Q(s_t, a_t) = r(s_t, a_t) + \mathbb{E}_{s_{t+1} \sim p(s_{t+1
 The actor-critic algorithm looks like the following in our framework:
 <div align="center"><img src="../assets/images/285-3-a2c.png" alt="actor-critic" width="700"></div>
 
-($$J(\theta)$$ is some objective which we optimize to encourage $$Q(s_t, a_t) > V(s_t)$$)
+($$J(\theta)$$ is some objective which we optimize to encourage the policy to take actions that are better than average, i.e. $$Q(s_t, a_t) > V(s_t)$$)
 
-## Summary of RL algorithms
-In the above section, we have actually introduce examples/ideas of the four main RL algorithms, namely **policy gradient methods**, **value based methods**, **actor-critic methods**, and **model-based methods**
+## 4 Summary of RL algorithms
+In the above section, we have actually introduce examples/ideas of the four main RL algorithms, namely **policy gradient methods**, **value based methods**, **actor-critic methods**, and **model-based methods**, the first question you might have is, why do we need all these different methods? The is a quite common one, there is no silver bullet. Different algorithms have different assumptions and tradeoffs, so for different RL problems different algorithms might be favourable.
 
+In this section, we discuss the three main considerations when applying RL algorithms, namely **assumptions**, **stability**, and **sample efficiency**. We will not touch any of the mathematical theories behind these properties, some of them will be introduced in future lectures, but this is not a RL theory course, and if you want a full feast of theory, I recommend the book by [Agarwal et al.](https://rltheorybook.github.io/rltheorybook_AJKS.pdf)
+
+
+Also I personally find this part to be hard to follow when I watching the videos, because there are so many terminologies that are not defined at this point of the course. But most of them sense to me now as I have finished learning the course and did all the homeworks. So if you are confused about this part, you can take a quick pass, and maybe come back to it once you finish the whole course.
+### 4.1 Assumptions
+
+* Full observability 
+  * What is it? The state sequence $$(s_1, s_2, \cdots)$$ is observable, or put it in an other way, the observation sequence $$(o_1, o_2, \cdots)$$ satisfy markov assumption.
+  * What algo requires it? Generally required by value function fitting methods. This requirement can be mitigated by adding recurrence and memory.
+* Episodic learning
+  * What is it? The MDP runs for finite amount of time, i.e. trajactory is $$(s_1, a_1, \cdots, s_T, a_T)$$ and $$T < \infty$$. Continuous learning means the task never ends.
+  * What algo requires it? It is often assumed by pure policy gradient methods, and also assumed by some model-based RL methods. For value-based methods, it's usually not a necessary assumption, but them tend to work the best when this assumption satisfies.
+* Continuity or smoothness of the model
+  * What is it? The model $$p(s_{t+1}\mid s_t, a_t)$$ is continues or smooth in it's variables.
+  * What algo requires it? This is often required by model-based algorithms derived from optimal control. This is also assumed by some some continuous value function learning methods.
+
+### 4.2 Stability
+
+Almost all RL algorithms we will discuss in this course are composed of iterative procedures, and therefore we always want to ask two questions: does the algorithm converge? does the final result of the algorithm gives a higher expected of reward? 
+
+Unlike deep supervised learning, RL algorithms are not always gradient descent. For example, the value-based method Q-learning is a fixed point iteration algorithm. Therefore, we cannot just plug in convergence analysis of SGD methods when analyzing RL algorithms; 
+
+Unlike deep supervised learning, RL algorithms are not always running towards the goal. For example, model-based RL algorithms fit the model which is not optimized for better expected reward. Therefore, sometimes convergence of a algorithm does not necessarily lead to a better policy.
+
+Policy gradient method is actually directly optimizing for better expected reward via stochastic gradient descent, but sometimes it's the least efficient algorithm :( and this brings us to the last point --- sample efficiency.
+
+### 4.3 Sample efficiency
+
+This is a very important issue in reinforcement learning. In plain english, sample efficiency means how many samples do we need to get a good policy. And the discussion of sample efficiency leads to two categories of methods: on-policy methods and off-policy methods. 
+
+On-policy means during training, each time the policy is changed, new samples (i.e. training trajectories) needs to be generated. For example, the classic policy gradient method is an on-policy algorithm, everytime you take one gradient step in the blue box, you need we generate new samples in the orange box to estimate the expected rewards in order for the algorithm to be valid. On-poicy algorithms are generally not very sample efficient.
+
+Off-policy means samples does not need to be generated using the current policy, so off-policy methods are generally more sample efficient. Model-based methods are usually off-policy.
+
+A spectrum of different algorithms in terms of sample efficiency is shown below:
+<div align="center"><img src="../assets/images/285-3-sample.png" alt="sample efficiency" width="700"></div>
+
+You might ask: why would we use a less sample efficient algorithm? The answer is, wall clock time is not the same as sample efficiency. In some cases, such as playing games, simulator can generate sample very fast and most of the time cost is in updating the policy or updating the model.
+
+<br/><br/>
+
+Finally, let me introduce a few algorithms under each category. 
+
+* Value function fitting methods
+  * Q-learning, DQN
+  * Temporal difference learning
+  * Fitted value iteration
+* Policy gradient methods
+  * REINFORCE
+  * Natural policy gradient
+  * Trust region policy optimization
+* Actor-critic algorithms
+  * Advantage actor-critic (A2C)
+  * Asynchronous advantage actor-critic (A3C)
+  * Soft actor-critic (SAC)
+* Model-based RL algorithms
+  * Dyna
+  * Guided policy search
+
+You might notice some famous algorithms above, for example, DQN, which is famous for mastering Atari games (e.g. ["Breakout"](https://www.youtube.com/watch?v=TmPfTpjtdgg)); or A2C, which is underlying algorithm for the famous [AlphaGo](https://deepmind.com/research/case-studies/alphago-the-story-so-far). In the rest of this course, we will learn most of the algorithms shown above and many more! 
