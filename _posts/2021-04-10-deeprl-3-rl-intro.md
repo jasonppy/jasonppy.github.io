@@ -89,9 +89,11 @@ This is a loop, but let's start with the orange box --- generate samples, just a
 
 With trajecteries, we go to the green box, where we will either try to explicitly fit the model $$p(s_{t+1}\mid s_t, a_t)$$, or estimate the expected return, which is actually evaluating the current policy. Lastly we go to the blue box to change the policy to make it better. And then repeat the process. In some algorithms, some parts might be very complex and some might be very simple.
 
-One simple example is basic *policy gradient* algorithm, which is shown below
+### 3.1 An Example of Policy Gradient Methods
+One simple example is basic *policy gradient* method, which is shown below
 <div align="center"><img src="../assets/images/285-3-policy.png" alt="policy gradient" width="700"></div>
 
+### 3.2 An Example of Model-based Methods
 Another more complex example, which attempts to fit the model, let's call it *model-based policy learning*.
 <div align="center"><img src="../assets/images/285-3-with-model.png" alt="policy gradient" width="700"></div>
 <!-- $$\begin{align*}
@@ -122,8 +124,53 @@ $$\theta \leftarrow \theta - \alpha\nabla_{\theta}J(\phi, \theta)$$ -->
 
 Don't worry if any of the above is not clear to you, we will cover these algorithms in later lectures.
 
-Before moving on to the next section, let's talk about the three boxes in turns of which is expensive and which is cheap. First of all, as I said before, the complexity of three boxes in different algorithms are different, but it is always true that the orange box is expensive if the algorithm is running in real world, i.e. the robot is operating and collecting data in the real world. But we also have all sorts of simulator which can (drastically) speed up the process. However, there is an inevitable gap between the simulator and the really world (Can we build a simulator that is exactly the same as the real world? That's impossible for now, because this means we have a perfect model of how the world operates)
+Now let's talk about the three boxes in turns of which is expensive and which is cheap. First of all, as I said before, the complexity of three boxes in different algorithms are different, but it is always true that the orange box is expensive if the algorithm is running in real world, i.e. the robot is operating and collecting data in the real world. But we also have all sorts of simulator which can (drastically) speed up the process. However, there is an inevitable gap between the simulator and the really world (Can we build a simulator that is exactly the same as the real world? That's impossible for now, because this means we have a perfect model of how the world operates)
 
 How about the green box? For policy gradient, it's just a summation over rewards, which is very fast, but for model-based policy learning, we need to do gradient update to learn the model, which is more expensive than just summation. For the blue box, policy gradient will do gradient update, while even though model-based policy leraning is also doing gradient update here, it's more expensive, because the gradient is calculated by backpropagation through time (the first decision affect all later states, the second decision affect all but first state etc. The process is recursive).
 
-## 
+### 3.3 Examples of Value-based Methods and the Actor-critic Algorithm
+Finally, there is another type of algorithms that doesn't not explicitly specify the policy $$\pi_{\theta}$$ called *value-based methods*. We will discuss this type of methods in detail in future lectures, but here let me briefly introduce the key concepts and ideas.
+
+Let's take a look at the goal of reinforcement learning:
+
+$$\begin{equation}\label{goal2}\text{argmax} \mathbb{E}_{p(\tau)}\sum_{t=1}^T r(s_t, a_t)\end{equation}$$
+
+Note that we take $$\theta$$ out from the trajectory distribution to indicate that we do not specify a parametric policy $$\pi_{\theta}$$. Value-based methods provide a different way to to the maximization.
+
+We define *Q-function*
+
+$$\begin{align} Q(s_t,a_t) &= \mathbb{E}_{p_{\theta}}\left[\sum_{t'=t}^{T}r(s_{t'},a_{t'}) \mid s_t, a_t \right] \\
+&= r(s_t, a_t) + \mathbb{E}_{a_{t+1} \sim \pi_{\theta}(a_{t+1}\mid s_{t+1}),s_{t+1}\sim p(s_{t+1}\mid s_t, a_t)} \left[ Q(s_{t+1}, a_{t+1}) \right] 
+\end{align}$$
+
+which has expected *reward to go* from step $$t$$ given the state and action at current state $$(s_t, a_t)$$. Q-function measures how good the state and action is. Now the goal (equation $$\ref{goal2}$$) can be writen as
+
+$$\begin{equation}\label{one_step}
+\text{argmax} \mathbb{E}_{s_1 \sim p(s_1)}\left[ \mathbb{E}_{a_1 \sim \pi(a_1\mid s_1)}Q(s_1, a_1) \right]
+\end{equation}$$
+
+In practice, we will know the first state $$s_1$$, and if we also know the Q-function $$Q(s_1, a_1)$$, we can directly let $$a_1^* = \text{argmax}_{a_1}Q(s_1, a_1)$$ and set $$\pi(a_1\mid s_1) = \delta_{a_1^*}(s_1)$$. This will give the maximal sum of reward. Therefore, if we know the Q-function at every time step, we can directly take the action that maximize the Q-function, and no parametric policy is needed. However, we will not be able to know the Q-function, how to deal with this? We will discuss some solutions in the later lectures. The following plot shows how this idea fit to our framework.
+<div align="center"><img src="../assets/images/285-3-value.png" alt="value-based" width="700"></div>
+
+In addition to the Q-fuction, we can also define the *value function*:
+
+$$\begin{align}
+V(s_t) & = \mathbb{E}_{p_{\theta}}\left[\sum_{t'=t}^{T}r(s_{t'},a_{t'}) \mid s_t \right] \\
+&= \mathbb{E}_{a_t\sim \pi_{\theta}(a_t\mid s_t)} \left\{ r(s_t, a_t) + \mathbb{E}_{s_{t+1} \sim p(s_{t+1}\mid s_t, a_t)}\left[ V(s_{t+1}) \right] \right\} \end{align}$$
+
+Value function measures how good the state is (i.e. the *value* of the state) First notice that Q-function and value function are related by
+
+$$\begin{equation}\label{relation}V(s_t) = \mathbb{E}_{a_t\sim \pi(a_t\mid s_t)}Q(s_t, a_t)\end{equation}$$
+
+Equation $$\ref{relation}$$ gives the a nice intuition about Q-function and value function --- value function evaluates on average how different actions  at the the current state is. This leads to another idea improve the explicit policy --- we improve policy $$\pi_{\theta}$$ such that the actions taken by running the policy is better than average, i.e. the probability that $$Q(s_t, a_t) > V(s_t)$$ is high. This leads to the actor-critic algorithm which stands at the intersection of policy gradient methods and value-based methods. Note that we can also derive Q-function from value function:
+
+$$\begin{equation} Q(s_t, a_t) = r(s_t, a_t) + \mathbb{E}_{s_{t+1} \sim p(s_{t+1}\mid s_t, a_t)}V(s_{t+1})\end{equation}$$
+
+The actor-critic algorithm looks like the following in our framework:
+<div align="center"><img src="../assets/images/285-3-a2c.png" alt="actor-critic" width="700"></div>
+
+($$J(\theta)$$ is some objective which we optimize to encourage $$Q(s_t, a_t) > V(s_t)$$)
+
+## Summary of RL algorithms
+In the above section, we have actually introduce examples/ideas of the four main RL algorithms, namely **policy gradient methods**, **value based methods**, **actor-critic methods**, and **model-based methods**
+
