@@ -5,7 +5,7 @@ categories:
   - DeepRL
 tags:
   - RL
-  - notes
+  - Notes
 ---
 
 This is an introduction to reinforcement learning, including core concepts, the general goal, the general framework, introduction and comparison of different types of approaches. This section contains nighty percent of the materials that are going to be covered by this course.
@@ -85,7 +85,7 @@ This is because when $$T = \inf$$, $$r(s,a)$$ where $$s$$ and $$a$$ are from the
 ## 3 The Framework of RL Algorithm
 Most of the RL algorithm can be framed as the following plot:
 <div align="center"><img src="../assets/images/285-3-frame.png" alt="framework" width="700"></div>
-This is a loop, but let's start with the orange box --- generate samples, just as supervised learning and unsupervised learning, data is the fuel for reinforcement learning. The samples are **trajectories** i.e. $$\{\tau_i\}_{i=1}^{N}$$ where $$\tau_i = (s^i_1, a^i_1, \cdots, s^i_T, a^i_T)$$ is one trajectory, and **rewards** i.e. $$\{ r^i \}_{i=1}^{N}$$, where $$r^i_t = (r^i_1, \cdots, r^i_T)$$ ($$T$$ doesn't have to be the same for every trajectory). The trajectories are typically obtained from the trajectory distribution $$p_{\theta}(\tau)$$ which is induced by policy $$\pi_{\theta}(a_t\mid o_t)$$ (shown in equation $$\ref{traj_dist}$$), which means trajectores are obtained by runnig the policy. Note that there are other ways to get trajectories such as using exploration methods. Rewards are obtained from the environment (real environment or simulator), which is usually specified by human in advance. Note that we can also learn a reward function using e.g. inverse reinforcement learning.
+This is a loop, but let's start with the orange box --- generate samples, just as supervised learning and unsupervised learning, data is the fuel for reinforcement learning. The samples are **trajectories** i.e. $$\{\tau_i\}_{i=1}^{N}$$ where $$\tau_i = (s^i_1, a^i_1, \cdots, s^i_T, a^i_T)$$ is one trajectory, and **rewards** i.e. $$\{ r^i \}_{i=1}^{N}$$, where $$r^i_t = (r^i_1, \cdots, r^i_T)$$ ($$T$$ doesn't have to be the same for every trajectory). The trajectories are typically obtained from the trajectory distribution $$p_{\theta}(\tau)$$ which is induced by policy $$\pi_{\theta}(a_t\mid o_t)$$ (shown in equation $$\ref{traj_dist}$$), which means trajectores are obtained by runnig the policy. Note that there are other ways to get trajectories such as using exploration methods. Rewards are obtained from the environment (real environment or simulator), and the reward function is unknown to the agent. Although we can also recover the reward function using inverse reinforcement learning.
 
 With trajecteries, we go to the green box, where we will either try to explicitly fit the model $$p(s_{t+1}\mid s_t, a_t)$$, or estimate the expected return, which is actually evaluating the current policy. Lastly we go to the blue box to change the policy to make it better. And then repeat the process. In some algorithms, some parts might be very complex and some might be very simple.
 
@@ -198,7 +198,7 @@ Unlike deep supervised learning, RL algorithms are not always gradient descent. 
 
 Unlike deep supervised learning, RL algorithms are not always running towards the goal. For example, model-based RL algorithms fit the model which is not optimized for better expected reward. Therefore, sometimes convergence of a algorithm does not necessarily lead to a better policy.
 
-Policy gradient method is actually directly optimizing for better expected reward via stochastic gradient descent, but sometimes it's the least efficient algorithm :( and this brings us to the last point --- sample efficiency.
+Policy gradient method is actually directly optimizing for better expected reward via stochastic gradient descent, but sometimes it's the least efficient algorithm :( This brings us to the last point --- sample efficiency.
 
 ### 4.3 Sample efficiency
 

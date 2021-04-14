@@ -17,9 +17,9 @@ github: [metadata]
 title: Jason's site
 email:
 description: >- # this means to ignore newlines until "baseurl:"
-  Personal website of Puyuan (Jason) Peng
-twitter_username: username
-github_username: username
+  Personal website of Puyuan Peng, Jason Peng
+twitter_username: PuyuanPeng
+github_username: jasonppy
 minimal_mistakes_skin: default
 search: true
 

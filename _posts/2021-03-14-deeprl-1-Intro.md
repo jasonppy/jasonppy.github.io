@@ -5,7 +5,7 @@ categories:
   - DeepRL
 tags:
   - RL
-  - notes
+  - Notes
 ---
 This is my notes for [CS285 Deep Reinforcement Learning](http://rail.eecs.berkeley.edu/deeprlcourse/) at UC Berkeley.
 
