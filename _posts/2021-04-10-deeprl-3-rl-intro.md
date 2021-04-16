@@ -143,7 +143,7 @@ $$\begin{align} Q(s_t,a_t) &= \mathbb{E}_{p_{\theta}}\left[\sum_{t'=t}^{T}r(s_{t
 &= r(s_t, a_t) + \mathbb{E}_{a_{t+1} \sim \pi_{\theta}(a_{t+1}\mid s_{t+1}),s_{t+1}\sim p(s_{t+1}\mid s_t, a_t)} \left[ Q(s_{t+1}, a_{t+1}) \right] 
 \end{align}$$
 
-which has expected *reward to go* from step $$t$$ given the state and action at current state $$(s_t, a_t)$$. Q-function measures how good the state and action is. Now the goal (equation $$\ref{goal2}$$) can be writen as
+which is the expected *reward to go* from step $$t$$ given the state and action at current state $$(s_t, a_t)$$. Q-function measures how good the state and action is. Now the goal (equation $$\ref{goal2}$$) can be writen as
 
 $$\begin{equation}\label{one_step}
 \text{argmax} \mathbb{E}_{s_1 \sim p(s_1)}\left[ \mathbb{E}_{a_1 \sim \pi(a_1\mid s_1)}Q(s_1, a_1) \right]
