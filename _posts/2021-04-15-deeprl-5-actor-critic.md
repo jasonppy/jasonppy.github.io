@@ -87,11 +87,11 @@ where $$y^i_t = \sum_{t'}^Tr^i_{t'}$$ or $$r^i_t + V^{\pi}_{\phi'}(s^i_{t+1})$$ 
 
 With fitted value function $$V^{\pi}_{\phi}$$, we can estimate the Q-function (Q-value) by 
 
-$$Q^{\pi}_{\phi}(s^i_t, a^i_t) \approx r^i_t + V^{\pi}_{\phi}(s^i_{t+1})$$
+$$\hat{Q}^{\pi}(s^i_t, a^i_t) \approx r^i_t + V^{\pi}_{\phi}(s^i_{t+1})$$
 
 and therefore the advantage:
 
-$$A^{\pi}_{\phi}(s^i_t, a^i_t) = r^i_t + V^{\pi}_{\phi}(s^i_{t+1}) - V^{\pi}_{\phi}(s^i_t)$$
+$$\hat{A}^{\pi}(s^i_t, a^i_t) = r^i_t + V^{\pi}_{\phi}(s^i_{t+1}) - V^{\pi}_{\phi}(s^i_t)$$
 
 And our actor-critic policy gradient is
 
@@ -100,7 +100,7 @@ $$\begin{align}
 &= \frac1N\sum_{i=1}^N\sum_{t=1}^T \nabla_{\theta}\pi_{\theta}(a^i_t\mid s^i_t)\left(Q^{\pi}(s^i_t, a^i_t) - V^{\pi}(s^i_t)\right) \\
 &= \frac1N\sum_{i=1}^N\sum_{t=1}^T \nabla_{\theta}\pi_{\theta}(a^i_t\mid s^i_t)\left(r(s^i_t, a^i_t) + \mathbb{E}_{s_{t+1} \sim p(s_{t+1}\mid s^i_t, a^i_t)}V^{\pi}(s_{t+1}) - V^{\pi}(s^i_t)\right) \\
 &\approx \frac1N\sum_{i=1}^N\sum_{t=1}^T \nabla_{\theta}\pi_{\theta}(a^i_t\mid s^i_t)\left(r^i_t + V^{\pi}_{\phi}(s^i_{t+1}) - V^{\pi}_{\phi}(s^i_t)\right) \\
-&=\frac1N\sum_{i=1}^N\sum_{t=1}^T \nabla_{\theta}\pi_{\theta}(a^i_t\mid s^i_t)A^{\pi}_{\phi}(s^i_t, a^i_t)
+&=\frac1N\sum_{i=1}^N\sum_{t=1}^T \nabla_{\theta}\pi_{\theta}(a^i_t\mid s^i_t)\hat{A}^{\pi}(s^i_t, a^i_t)
 \end{align}$$
 
 
@@ -108,8 +108,8 @@ The *batch* actor-critic algorithm is:
 
 1. run current policy $$\pi_{\theta}$$ and get trajectories $$\{ \tau^i \}_{i=1}^{N}$$ and rewards $$\{ r^i_t \}_{i,t=1,1}^{N,T}$$
 2. fit value function $$V^{\pi}_{\phi}$$ by minimizing equation $$\ref{value_obj}$$ 
-3. calculate the advantage of each state action pair $$A^{\pi}_{\phi}(s^i_t, a^i_t) = r^i_t + V^{\pi}_{\phi}(s^i_{t+1}) - V^{\pi}_{\phi}(s^i_t)$$
-4. calculate actor-critic policy gradient $$\nabla_{\theta}J(\theta) =\frac1N\sum_{i=1}^N\sum_{t=1}^T \nabla_{\theta}\pi_{\theta}(a^i_t\mid s^i_t)A^{\pi}_{\phi}(s^i_t, a^i_t)$$
+3. calculate the advantage of each state action pair $$\hat{A}^{\pi}(s^i_t, a^i_t) = r^i_t + V^{\pi}_{\phi}(s^i_{t+1}) - V^{\pi}_{\phi}(s^i_t)$$
+4. calculate actor-critic policy gradient $$\nabla_{\theta}J(\theta) =\frac1N\sum_{i=1}^N\sum_{t=1}^T \nabla_{\theta}\pi_{\theta}(a^i_t\mid s^i_t)\hat{A}^{\pi}(s^i_t, a^i_t)$$
 5. gradient update: $$\theta \leftarrow \theta + \alpha\nabla_{\theta}J(\theta)$$
 
 We call it *batch* in that for each policy update we collect a batch of trajectories. We can also update the policy (and value function) using only one step of data i.e. $$(s_t, a_t, r_t, s_{s+1})$$, which leads to the *online* actor-critic algorithm which we will introduce later.
@@ -139,7 +139,19 @@ where in $$J_{\text{PG}}(\theta)$$, $$b$$ is also a discounted baseline e.g. $$\
 Usually we set $$\gamma$$ to be something like $$0.99$$. It can be proved that discount factor can prevent the expected reward from being infinity and reduce the variance. Therefore, actually in most cases, no matter it's finite of infinite horizon, people use discounted policy gradient, i.e. equation $$\ref{dis_pg} \text{ and } \ref{dis_ac}$$, rather than the original ones.
 
 ## 3 Online Actor-critic algorithms
+So far we've been discussing the batch actor-critic algorithm, which for each gradient update, we need to run the policy to collect a batch of trajectories. In this section, we introduce online actor-critic algorithms, which allow faster neural network weights update, and with some techniques can work better than batch actor-critic algorithms in some cases.
 
+The simplest version of online actor-critic algorithm is similar to online learning, where instead of calculating the gradient using a batch of trajectories and rewards, it only uses one transition tuple $$(s, a, s', r)$$. The algorithm is the following:
+
+1. run policy $$\pi_{\theta}$$ for one time step and collect $$(s, a, s', r)$$
+2. gradient update $$V^{\pi}_{\phi}$$ using (s, r + V^{\pi}_{\phi}(s'))$$
+3. evaluate $$\hat{A}^{\pi}(s) = r + \gamma V^{\pi}_{\phi}(s') -  V^{\pi}_{\phi}(s)$$
+4. calculate policy gradient $$\nabla_{\theta}J(\theta) = \nabla_{\theta}\log \pi_{\theta}(a\mid s)\hat{A}^{\pi}(s)$$
+5. gradient update: $$\theta \leftarrow \theta + \alpha \nabla_{\theta}J(\theta)$$
+
+However, this algorithm does not really work in most cases, because one sample estimate has very high variance, coupled with policy gradient, the variance can be notoriously high. To deal with the high variance problem, we introduce the synchronized parallel actor-critic algorithm, which is basically several agent running basic online actor-critic algorithm but using and updating the shared policy and value network $$\pi_{\theta}  \text{ and } V^{\pi}_{\phi}$$. See the following figure:
+
+<div align="center"><img src="../assets/images/285-5-para-ac.png" alt="parallel ac" width="700"></div>
 
 ## 4 More tricks
 ### Critic as baseline
