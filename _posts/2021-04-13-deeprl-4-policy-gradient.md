@@ -122,7 +122,7 @@ $$\begin{equation}\label{orig_gradient}\frac1N \sum_{i=1}^{N}\sum_{t=1}^{T}\nabl
 Note that gradient that incorporates causality (equation $$\ref{5}$$) are really the same as the gradient that doesn't incorporate causality (equation $$\ref{orig_gradient}$$), but with past rewards in the reward summation subtracted. This gives less terms in the summation, and therefore gives smaller variance.
 
 ### 2.2 Baselines
-We can also reduce the variance of by introducing a baseline, which is special case of the [control variates](https://en.wikipedia.org/wiki/Control_variates) variance reduction technique. 
+We can also reduce the variance of by introducing a baseline.
 
 To simplify the notation, let's use $$r(\tau)$$ to denote $$\sum_{t=1}^{T}r(s_t, a_t)$$. We want to use Monte Carlo estimate to approximate the gradient
 

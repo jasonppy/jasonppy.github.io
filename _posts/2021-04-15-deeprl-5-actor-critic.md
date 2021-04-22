@@ -151,17 +151,49 @@ The simplest version of online actor-critic algorithm is similar to online learn
 
 However, this algorithm does not really work in most cases, because one sample estimate has very high variance, coupled with policy gradient, the variance can be notoriously high. To deal with the high variance problem, we introduce the synchronized parallel actor-critic algorithm, which is basically several agent running basic online actor-critic algorithm but using and updating the shared policy and value network $$\pi_{\theta}  \text{ and } V^{\pi}_{\phi}$$. See the following figure:
 
-<div align="center"><img src="../assets/images/285-5-para-ac.png" alt="parallel ac" width="700"></div>
+<div align="center"><img src="../assets/images/285-5-para-ac.png" alt="parallel ac" width="600"></div>
 
-## 4 More tricks
-### Critic as baseline
-why state dependent baseline still gives unbiased gradient estimator?
+This can be very easily realized by just changing the the random seeds of the code.
 
-$$\begin{align}
-\nabla_{\theta}J(\theta) = \mathbb{E}_{\tau\sim p_{\theta}(\tau)}\sum_{t=1}^T\nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t)\left( \sum_{t'=t}^{T}\gamma^{t'-t}r(s_{t'}, a_{t'}) - V^{\pi}(s_t)\right)
+Another variants which has been proved to work very well when we have a very large pool of workers is called the asynchronized parallel actor-critic algorithm:
+
+<div align="center"><img src="../assets/images/285-5-para-aac.png" alt="parallel ac" width="600"></div>
+
+Each worker (agent) send the one step transition data to the center to update the parameters (both $$\theta$$ and $$\phi$$), but do not wait for the updated weights to be deployed before it execute the next step in the environment. This is a little counterintuitive, because in this way, the worker might not using the latest policy to decide actions. But it turns out that the policy network will be very similar in the near time steps and since the algorithm is run asychronizely, it can be very efficient.
+
+
+## 4 Variance/Bias Tradeoff in Estimating the Advantage
+In this section we go back to the actor critic gradient, what distinguishes it from the vanilla policy gradient is that it uses the advantage $$\hat{A}^{\pi}(s_t, a_t)$$ to replace the original one sample estimate of the expected discounted reward $$\sum_{t'=t}\gamma^{t'-t}r^i_{t'}$$. The advantage has smaller variance, but it can be biased as $$V^{\pi}_{\phi}(s_{t})$$ can be an imperfect estimation of the value function.
+
+A question would be, can we bring the best from the two worlds and get a unbiased estimate of advantage while keep the variance low? Or further, can be develop a machanism that allows us to tradeoff the variance and bias in estimating the advantage?
+
+The answer is yes and the rest of this section will introduce three advantage estimator that gives different variance bias tradeoff.
+
+Recall that the original advantage estimator in actor-critic algorithm is:
+
+$$\begin{align} 
+\hat{A}^{\pi} 
+&= \hat{Q}^{\pi}(s_t, a_t) - V^{\pi}_{\phi}(s_{t})  \\
+&= r_t + \gamma V^{\pi}_{\phi}(s_{t+1}) - V^{\pi}_{\phi}(s_{t}) \label{orig_a}
 \end{align}$$
 
-let's take one element of the summation over time horizon out:
+### 4.1 critic as baseline (state dependent baseline )
+The first advantage estimator is
+$$\begin{align}
+\hat{A}^{\pi} 
+ = \sum_{t'=t}^{T}\gamma^{t'-t}r_t - V^{\pi}_{\phi}(s_{t})
+\end{align}$$
+
+Compare to equation $$\ref{orig_a}$$, we replace the neural estimation of discounted expected reward to go with the one sample estimaion $$\sum_{t'=t}^{T}\gamma^{t'-t}r_t$$ used in policy gradient. This estimator has give lower variance than policy gradient whose baseline is a constant [Greensmith et al. 04'](https://jmlr.csail.mit.edu/papers/volume5/greensmith04a/greensmith04a.pdf) (but the variance is still higher than the actor-critic gradient). But is this advantage estimator really leads to an unbiased gradient estimator?
+
+We can actually show that any state dependent baseline in policy gradient can lead to unbiased gradient estimator. I.e. we want to prove
+
+$$\begin{align}
+\nabla_{\theta}J(\theta) &= \mathbb{E}_{\tau\sim p_{\theta}(\tau)}\sum_{t=1}^T\nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t)\left( \sum_{t'=t}^{T}\gamma^{t'-t}r(s_{t'}, a_{t'}) - V^{\pi}(s_t)\right) \\
+&=  \mathbb{E}_{\tau\sim p_{\theta}(\tau)}\sum_{t=1}^T\nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t)\sum_{t'=t}^{T}\gamma^{t'-t}r(s_{t'}, a_{t'}) \\
+\end{align}$$
+
+let's take one element from the summation $$\sum_{t=1}^T$$ out:
 
 $$\begin{align}
 \nabla_{\theta}J(\theta)_t &= \mathbb{E}_{\tau_t\sim p_{\theta}(\tau_t)}\nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t)\left( \sum_{t'=t}^{T}\gamma^{t'-t}r(s_{t'}, a_{t'}) - V^{\pi}(s_t)\right) \\
@@ -170,3 +202,45 @@ $$\begin{align}
 &=  \mathbb{E}_{\tau_t\sim p_{\theta}(\tau_t)}\nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t)\left( \sum_{t'=t}^{T}\gamma^{t'-t}r(s_{t'}, a_{t'}) \right) - \mathbb{E}_{s_{1:t}, a_{1:t-1}}V^{\pi}(s_t) \cdot 0 \\
 &=  \mathbb{E}_{\tau_t\sim p_{\theta}(\tau_t)}\nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t)\left( \sum_{t'=t}^{T}\gamma^{t'-t}r(s_{t'}, a_{t'}) \right)
 \end{align}$$
+
+### 4.2 state-action dependent baseline
+To be updated, material is in [Gu et al. 16'](https://arxiv.org/pdf/1611.02247.pdf)
+
+### 4.3 Generalized Advantage Estimation (GAE)
+Lastly let's compare the advantage estimation introduced in section 4.1 (let's call it $$A^{\pi}_{\text{MC}}$$) and the advantage estimation used in vanilla actor-critic algorithm (let's call it $$A^{\pi}_{\text{C}}$$)
+
+$$\begin{align*}
+A^{\pi}_{\text{MC}} &= \sum_{t'=t}^{T}\gamma^{t'-t}r_t - V^{\pi}_{\phi}(s_{t}) \\
+A^{\pi}_{\text{C}} &= r_t + \gamma V^{\pi}_{\phi}(s_{t+1}) - V^{\pi}_{\phi}(s_{t})
+\end{align*}$$
+
+$$A^{\pi}_{\text{MC}}$$ has higher variance because of the one sample estimation $$\sum_{t'=t}^{T}\gamma^{t'-t}r_t$$, while $$A^{\pi}_{\text{C}}$$ is biased because $$r_t + \gamma V^{\pi}_{\phi}(s_{t+1})$$ might be an biased estimator of $$Q^{\pi}(s_{t+1})$$.
+
+Stare at these two estimators for a while, you might notice that the essential part that decide variance bias tradeoff is the estimation of $$Q^{\pi}$$, one sample estimation has high variance while neural estimation can be biased. We can combine the two and use one sample estimation for the first $$n$$ steps and use neural estimation for the rest. i.e. 
+
+$$\begin{align}
+A^{\pi}_{l} &= \sum_{t' = t}^{t+l-1} \gamma^{t'-t} r_{t'} + \gamma^{l} V^{\pi}_{\phi}(s_{t+l}) - V^{\pi}_{\phi}(s_{t})
+\end{align}$$
+
+This also make sense intuitively, because the more distant from the current time step, the higher the variance will be. On the other hand, although $$V^{\pi}_{\phi}$$ can be biased, when being multiplied by $$\gamma^{l}$$, the effect can be small. Therefore, $$l$$ controls the variance bias tradeoff of the advantage estimation. let $$l=1$$, we recover $$A^{\pi}_{\text{C}}$$, which has the highest bias and lowest variance, let $$l=\infty$$, we recover $$A^{\pi}_{\text{MC}}$$, which is unbiased by has the highest variance.
+
+$$A^{\pi}_{GAE}$$ is defined as a exponentially weighted sum of $$A^{\pi}_{l}$$'s:
+
+$$\begin{equation}\label{form1}
+A^{\pi}_{GAE} = \sum_{l=1}^{\infty}w_l A^{\pi}_l
+\end{equation}$$
+
+where $$w_l \propto \lambda^{l-1}$$
+
+It can be shown that $$A^{\pi}_{GAE}$$ can be equivalently writen as
+
+$$\begin{equation}
+A^{\pi}_{GAE} = \sum_{t'=t}^\infty (\gamma \lambda)^{t'-t} \delta_{t'}
+\end{equation}$$
+
+Where
+
+$$\delta_{t'} = r_{t'} + \gamma V^{\pi}_{\phi}(s_{t'+1}) - V^{\pi}_{\phi}(s_{t'})$$
+
+
+
