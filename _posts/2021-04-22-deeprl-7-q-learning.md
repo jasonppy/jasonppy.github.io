@@ -220,7 +220,7 @@ The algorithm of DDPG can be writen as
 <div align="center"><img src="../assets/images/285-7-ddpg.png" width="700"></div>
 
 
-## Tips for Praticioner
+## 6 Tips for Praticioner
 Here are some tips for applying Q-learnig methods
 
 1. Q-learning takes some care to stablize. Runs with different seeds might have inconsistent. Large replay buffer helps improve stability.
@@ -232,8 +232,8 @@ Here are some tips for applying Q-learnig methods
 7. Schedule exploration (high to low) and learning rates (high to low), Adam optimizer can help too.
 
 
-
-
+## 7 Demo: DeepMind DQN
+<iframe width="1424" height="652" src="https://www.youtube.com/embed/V1eYniJ0Rnk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 

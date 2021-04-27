@@ -234,3 +234,6 @@ Finally, let me introduce a few algorithms under each category.
   * Guided policy search
 
 You might notice some famous algorithms above, for example, DQN, which is famous for mastering Atari games (e.g. ["Breakout"](https://www.youtube.com/watch?v=TmPfTpjtdgg)); or A2C, which is underlying algorithm for the famous [AlphaGo](https://deepmind.com/research/case-studies/alphago-the-story-so-far). In the rest of this course, we will learn most of the algorithms shown above and many more! 
+
+## 5 The Documentary of AlphaGo
+<iframe width="1424" height="652" src="https://www.youtube.com/embed/WXuK6gekU1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

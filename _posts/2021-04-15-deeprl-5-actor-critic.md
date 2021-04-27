@@ -243,4 +243,5 @@ Where
 $$\delta_{t'} = r_{t'} + \gamma V^{\pi}_{\phi}(s_{t'+1}) - V^{\pi}_{\phi}(s_{t'})$$
 
 
-
+## 5 Demo: DeepMind A3C
+<iframe width="1424" height="652" src="https://www.youtube.com/embed/nMR5mjCFZCw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

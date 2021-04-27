@@ -183,37 +183,37 @@ The use causality and baseline are the two most common techniques to reduce the 
 ## 3 Off-policy Policy Gradient
 In this section, we study how to make policy gradient more efficient, and the idea is to make the algorithm from on-policy to off-policy. 
 
-We will start from the original policy gradient and use the idea of important sampling to make the expectation to be no longer over the current policy. Sepcifically, we want the expectation to be over some old policy $$\pi_{\theta'}$$ i.e. $$\pi_{\theta'}$$ is many gradient steps before the current policy $$\pi_{\theta}$$.
+We will start from the original policy gradient and use the idea of important sampling to make the expectation to be no longer over the current policy. Sepcifically, we want the expectation to be over some old policy $$\pi_{\theta}$$ i.e. $$\pi_{\theta}$$ is many gradient steps before the current policy $$\pi_{\theta'}$$.
 
 $$\begin{align}
-\nabla_{\theta}J(\theta)
-&= \mathbb{E}_{\tau \sim p_{\theta}(\tau)}\sum_{t=1}^T\nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t) r(s_t, a_t) \label{start}\\
-&= \sum_{t=1}^{T}\mathbb{E}_{s_t, a_t \sim p_{\theta}(s_t, a_t)}\nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t) r(s_t, a_t) \label{switch} \\
-&= \sum_{t=1}^{T}\int_{s_t, a_t}p_{\theta}(s_t, a_t)\nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t) r(s_t, a_t) \text{d}(s_t, a_t) \label{integral}\\
-&= \sum_{t=1}^{T}\int_{s_t, a_t}p_{\theta'}(s_t, a_t)\frac{p_{\theta}(s_t, a_t)}{p_{\theta'}(s_t, a_t)}\nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t) r(s_t, a_t) \text{d}(s_t, a_t) \\
-&= \sum_{t=1}^{T}\mathbb{E}_{s_t, a_t \sim p_{\theta'}(s_t, a_t)}\frac{p_{\theta}(s_t, a_t)}{p_{\theta'}(s_t, a_t)}\nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t) r(s_t, a_t) \label{importance_sampling} \\
-&= \sum_{t=1}^{T}\mathbb{E}_{s_t, a_t \sim p_{\theta'}(s_t, a_t)}\frac{p_{\theta}(s_t)\pi_{\theta}(a_t\mid s_t)}{p_{\theta'}(s_t)\pi_{\theta'}(a_t\mid s_t)}\nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t) r(s_t, a_t) \label{marginal}\\
-&\approx \sum_{t=1}^{T}\mathbb{E}_{s_t, a_t \sim p_{\theta'}(s_t, a_t)}\enclose{downdiagonalstrike}{\frac{p_{\theta}(s_t)}{p_{\theta'}(s_t)}}\frac{\pi_{\theta}(a_t\mid s_t)}{\pi_{\theta'}(a_t\mid s_t)}\nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t) r(s_t, a_t) \label{cross_out}\\
-&= \sum_{t=1}^{T}\mathbb{E}_{s_t, a_t \sim p_{\theta'}(s_t, a_t)}\frac{\pi_{\theta}(a_t\mid s_t)}{\pi_{\theta'}(a_t\mid s_t)}\nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t) r(s_t, a_t) \label{res}\\
+\nabla_{\theta'}J(\theta')
+&= \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\sum_{t=1}^T\nabla_{\theta'}\log \pi_{\theta'}(a_t\mid s_t) r(s_t, a_t) \label{start}\\
+&= \sum_{t=1}^{T}\mathbb{E}_{s_t, a_t \sim p_{\theta'}(s_t, a_t)}\nabla_{\theta'}\log \pi_{\theta'}(a_t\mid s_t) r(s_t, a_t) \label{switch} \\
+&= \sum_{t=1}^{T}\int_{s_t, a_t}p_{\theta'}(s_t, a_t)\nabla_{\theta'}\log \pi_{\theta'}(a_t\mid s_t) r(s_t, a_t) \text{d}(s_t, a_t) \label{integral}\\
+&= \sum_{t=1}^{T}\int_{s_t, a_t}p_{\theta'}(s_t, a_t)\frac{p_{\theta}(s_t, a_t)}{p_{\theta}(s_t, a_t)}\nabla_{\theta'}\log \pi_{\theta'}(a_t\mid s_t) r(s_t, a_t) \text{d}(s_t, a_t) \\
+&= \sum_{t=1}^{T}\mathbb{E}_{s_t, a_t \sim p_{\theta}(s_t, a_t)}\frac{p_{\theta'}(s_t, a_t)}{p_{\theta}(s_t, a_t)}\nabla_{\theta'}\log \pi_{\theta'}(a_t\mid s_t) r(s_t, a_t) \label{importance_sampling} \\
+&= \sum_{t=1}^{T}\mathbb{E}_{s_t, a_t \sim p_{\theta'}(s_t, a_t)}\frac{p_{\theta'}(s_t)\pi_{\theta'}(a_t\mid s_t)}{p_{\theta}(s_t)\pi_{\theta}(a_t\mid s_t)}\nabla_{\theta'}\log \pi_{\theta'}(a_t\mid s_t) r(s_t, a_t) \label{marginal}\\
+&\approx \sum_{t=1}^{T}\mathbb{E}_{s_t, a_t \sim p_{\theta}(s_t, a_t)}\enclose{downdiagonalstrike}{\frac{p_{\theta'}(s_t)}{p_{\theta}(s_t)}}\frac{\pi_{\theta'}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}\nabla_{\theta'}\log \pi_{\theta'}(a_t\mid s_t) r(s_t, a_t) \label{cross_out}\\
+&= \sum_{t=1}^{T}\mathbb{E}_{s_t, a_t \sim p_{\theta}(s_t, a_t)}\frac{\pi_{\theta'}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}\nabla_{\theta'}\log \pi_{\theta'}(a_t\mid s_t) r(s_t, a_t) \label{res}\\
 \end{align}$$
 
 
-From equation $$\ref{start} \text{ to } \ref{switch}$$, we switch the summation and expectation sign and also set the expectation to be over marginal distribution of $$(s_t, a_t)$$ rather than the whole trajectory. From $$\ref{switch}$$ to $$\ref{importance_sampling}$$, we use importance sampling to change the underlying distribution of the expectation, where $$\theta'$$ is the parameter of some old policy (e.g. the policy that is many gradient steps before the current policy). This step makes the gradient off-policy, as samples are from the old policy rather than the current policy. Note that the distribution $$p_{\theta'}(s_t, a_t)$$ or $$p_{\theta}(s_t, a_t)$$ is unknown if we don't know the transition model, therefore we write them as a product of state marginal $$p_{\theta}(s_t)$$ and policy $$\pi_{\theta}(a_t\mid s_t)$$ in $$\ref{marginal}$$, and then cross out the state marginal in $$\ref{cross_out}$$. Just crossing out the term will lead to an systematic estimation error on the gradient estimation, but we will see in later lecture when we introduce advanced policy gradient methods that the error is bounded when the gap between $$\pi_{\theta'}$$ and $$\pi_{\theta}$$ are not too big.
+From equation $$\ref{start} \text{ to } \ref{switch}$$, we switch the summation and expectation sign and also set the expectation to be over marginal distribution of $$(s_t, a_t)$$ rather than the whole trajectory. From $$\ref{switch}$$ to $$\ref{importance_sampling}$$, we use importance sampling to change the underlying distribution of the expectation, where $$\theta$$ is the parameter of some old policy (e.g. the policy that is many gradient steps before the current policy). This step makes the gradient off-policy, as samples are from the old policy rather than the current policy. Note that the distribution $$p_{\theta}(s_t, a_t)$$ or $$p_{\theta'}(s_t, a_t)$$ is unknown if we don't know the transition model, therefore we write them as a product of state marginal $$p_{\theta'}(s_t)$$ and policy $$\pi_{\theta'}(a_t\mid s_t)$$ in $$\ref{marginal}$$, and then cross out the state marginal in $$\ref{cross_out}$$. Just crossing out the term will lead to an systematic estimation error on the gradient estimation, but we will see in later lecture when we introduce advanced policy gradient methods that the error is bounded when the gap between $$\pi_{\theta}$$ and $$\pi_{\theta'}$$ are not too big.
 
-Finally we have equation $$\ref{res}$$ which is off-policy policy gradient. An intuitive explanation of this is that the off-policy policy gradient is on-policy  policy gradient but each term is weighted by $$\frac{\pi_{\theta}(a_t\mid s_t)}{\pi_{\theta'}(a_t\mid s_t)}$$. 
+Finally we have equation $$\ref{res}$$ which is off-policy policy gradient. An intuitive explanation of this is that the off-policy policy gradient is on-policy  policy gradient but each term is weighted by $$\frac{\pi_{\theta'}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}$$. 
 
 The Monte Carlo estimate of the off-policy policy gradient is 
 
 $$\begin{equation}
-\nabla_{\theta}J(\theta) = \frac1N \sum_{i=1}^{N}\sum_{t=1}^{T}\frac{\pi_{\theta}(a^i_t\mid s^i_t)}{\pi_{\theta'}(a^i_t\mid s^i_t)}\nabla_{\theta}\log \pi_{\theta}(a^i_t\mid s^i_t) r^i_t 
+\nabla_{\theta'}J(\theta') = \frac1N \sum_{i=1}^{N}\sum_{t=1}^{T}\frac{\pi_{\theta'}(a^i_t\mid s^i_t)}{\pi_{\theta}(a^i_t\mid s^i_t)}\nabla_{\theta'}\log \pi_{\theta'}(a^i_t\mid s^i_t) r^i_t 
 \end{equation}$$
 
-Where the trajectories are sampled from old policy $$p_{\theta'}(\tau)$$.
+Where the trajectories are sampled from old policy $$p_{\theta}(\tau)$$.
 
 We can also use the log derivative trick to write the off-policy policy gradient as
 
 $$\begin{equation}\label{off_use}
-\nabla_{\theta}J(\theta) = \frac1N \sum_{i=1}^{N}\sum_{t=1}^{T}\frac{\nabla_{\theta}\pi_{\theta}(a^i_t\mid s^i_t)}{\pi_{\theta'}(a^i_t\mid s^i_t)}r^i_t 
+\nabla_{\theta'}J(\theta') = \frac1N \sum_{i=1}^{N}\sum_{t=1}^{T}\frac{\nabla_{\theta'}\pi_{\theta'}(a^i_t\mid s^i_t)}{\pi_{\theta}(a^i_t\mid s^i_t)}r^i_t 
 \end{equation}$$
 
 This will be useful when we implement the algorithm (see next section). 

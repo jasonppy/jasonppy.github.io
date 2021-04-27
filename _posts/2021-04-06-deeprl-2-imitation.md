@@ -137,3 +137,5 @@ To get away with this exponential explosion problem, we use factor the distribut
 
 [Goal conditioned behavior cloning](https://www.youtube.com/watch?v=nM9f-5oQ86Y&list=PL_iWQOsE6TfURIIhCrlt-wj9ByIVpbfGc&index=10). example: [learning latent plans from play](file:///Users/jason/Zotero/storage/5E7EMYV5/learning-from-play.github.io.html)
 
+## 6 Demo: NVIDIA's Self-Driving Car
+<iframe width="1424" height="652" src="https://www.youtube.com/embed/-96BEoXJMs0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
