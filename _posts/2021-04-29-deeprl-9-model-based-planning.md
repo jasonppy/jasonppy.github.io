@@ -1,5 +1,5 @@
 ---
-title: "Deep RL 10 Model-based Planning"
+title: "Deep RL 9 Model-based Planning"
 date: 2021-04-29
 categories:
   - DeepRL
@@ -7,20 +7,6 @@ tags:
   - RL
   - Notes
 ---
-
-**now assuming we know the model (dynamics, transition)**
-
-1. Is this assumption practical?
-2. Is it helpful?
-3. Can we just calculate the optimal action sequence? - open loop planning, random shooting method, CEM cross-entropy method. open loop planning can be ideal in determinstic setting, but not in stochastic setting 
-4. Monte Carlo Tree Search, I think it's close-loop planning, it's only for discrete case
-5. LQR (a method for trajectory optimization), should consider using Pieter's material
-
-
-recap the goal of RL
-point out the part that we assume we don't know 
-
-In this lecture, we will mostly talk about the deterministic dynamics, i.e. $$s_{t+1} = f(s_t, a_t)$$, although we will also generalize some methods to stochastic dynamics, i.e. $$s_{t+1} \sim p(s_{t+1}\mid s_t, a_t)$$
 
 Let's recall the reinforcement learning goal --- we want to maximaze the expected reward (or discounted reward in the infinite horizon case)
 
