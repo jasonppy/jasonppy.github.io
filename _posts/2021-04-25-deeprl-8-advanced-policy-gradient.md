@@ -241,3 +241,5 @@ and we include it when it makes the objective worse." (quoted sentences are dire
 ## Demo: OpenAI PPO 
 <!-- <iframe width="1424" height="652" src="https://www.youtube.com/embed/KJ15iGGJFvQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 <div align="center"><iframe width="600" height="400" src="https://cdn.openai.com/openai-baselines-ppo/knocked-over-stand-up.mp4" title="OpenAI PPO" frameborder="0" allowfullscreen></iframe></div>
+
+[Link](https://openai.com/blog/openai-baselines-ppo/) to the article by OpenAI
