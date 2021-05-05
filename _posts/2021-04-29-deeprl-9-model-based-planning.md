@@ -380,3 +380,6 @@ u_t = K_t(x_t - \hat{x}_t) + \alpha k_t  + \hat{u}_t
 $$\alpha$$ controls the step size in the update (how much $$u_t$$ will deviate from $$\hat{u}_t$$). And we can perform a search over $$\alpha$$, until we see improvements on the cost.
 
 
+## 5 Demo: Autonomous Helicopter (Stanford) and Complex Behaviour Sythesis (UWashington)
+<iframe width="1424" height="652" src="https://www.youtube.com/embed/Idn10JBsA3Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+<iframe width="1424" height="652" src="https://www.youtube.com/embed/anIsw2-Lbco" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
