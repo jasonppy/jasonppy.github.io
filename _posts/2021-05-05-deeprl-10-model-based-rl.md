@@ -74,7 +74,7 @@ The first approach is **Bayesian Neural Networks**, or BNN. To consider the prob
 
 The $$\theta$$ that we find are actually the maximal likelihood estimation, i.e.
 
-$$\theta^* = \argmax_{\theta}p(\mathcal(D)\mid \theta)$$
+$$\theta^* = \text{argmax}_{\theta}p(\mathcal(D)\mid \theta)$$
 
 Adopting the Bayesian approach, we want to estimate the posterior distribution
 
@@ -115,7 +115,7 @@ Now the objective has changed to
 
 $$\begin{align}\label{un_obj}
 &J(a_1, \cdots, a_T) = \frac1m \sum_{j=1}^{m}\sum_{t=1}^{T}r(s_{t,j}, a_t)\\
-&\text{ where } s_{t,j} = f_{\theta_j}(s_{t-1,j}, a_{t-1}) \text{ or } s_{t,j} \sim p(s_t\mids_{t-1,j}, a_{t-1}, \theta_j)\\
+&\text{ where } s_{t,j} = f_{\theta_j}(s_{t-1,j}, a_{t-1}) \text{ or } s_{t,j} \sim p(s_t\mid s_{t-1,j}, a_{t-1}, \theta_j)\\
 &\text{ and } \theta_j \sim p(\theta\mid \mathcal{D})
 \end{align}$$
 
@@ -130,9 +130,64 @@ With this, we can write out the uncertainty-aware MPC algorithm:
 You might notice that this algorithm seems do not use the objective i.e. equation $$\ref{un_obj}$$, but actually at step 4, the algorithm is actually planning based on equation $$\ref{un_obj}$$, and since the reward relies on ensemble dynamics, we conveniently say "plan through the ensemble dynamics to choose actions".
 
 ## 3 Model-Based RL with Images
-Previously we've assuming state is obserable, because we've been using transitions $$\{ (s_i, a_i, s'_i) \}$$ for supervised learning of dynamics (or distribution of dynamics). In some cases, especially when the observation is image, directly using it as state for supervised learning of dynamics can be troublesome, and the reasons are:
+Previously we've been assuming that state is obserable, because we've been using transitions $$\{ (s_i, a_i, s'_i) \}$$ for supervised learning of dynamics (or distribution of dynamics). In some cases, especially when the observation is image, directly treating it as state for supervised learning of dynamics can be troublesome, and the reasons are:
 
-1. High dimensionality
-2. Redundancy
-3. Partial observability
+1. High dimensionality. We are fitting $$s_{t+1} = f_{\theta}(s_t, a_t) \text{ or } s_{t+1} \sim p_{\theta}(s_{t+1}\mid s_t, a_t) $$, if $$s_{t+1}$$ is image, then the dimension is $$3\times\text{H}\times\text{W}$$, which can be very large in many cases and thus accurate prediction is very difficult.
+2. Redundancy. Many parts of the images can stay unchanged during the whole process, this leads a redundancy in the data.
+3. Partial observability. There are things that static images can not directly represent, such as speed and acceleration, although you might derive this from the image, but that requires extra potentially nontrivial effort and might not be accurate.
 
+We will now introduce the state-space model that models POMDPs, which treats states as latent variables and model observation using distributions conditioned on states. 
+
+Let's recall how dynamics is learned when we assume states are observable. We parameterize the dynamics using a neural net with parameter $$\theta$$:
+
+$$p(s_{1:T}) = \prod_{t=1}^{T}p_{\theta}(s_{t+1}\mid s_t, a_t)$$
+
+Note that we slightly abuse the notation for clarity, for example $$p_{\theta}(s_{1}\mid s_0, a_0) = p_{\theta}(s_1)$$.
+
+And solve for $$\theta$$ using maximal likelihood on collected transitions $$\{ (s^i_{t+1}, s^i_t, a^i_t) \}_{i,t=1}^{N,T}$$:
+
+$$\max_{\theta}\frac1N \sum_{i=1}^{N} \sum_{t=1}^{T} \log p_{\theta}(s^i_{t+1}\mid s^i_t, a^i_t)$$
+
+Now consider state unobservable, We have:
+
+$$p(s_{1:T}, o_{1:T}) = \prod_{t=1}^{T}p_{\theta}(s_{t+1}\mid s_t, a_t)p_{\phi}(o_t\mid s_t)$$
+
+Where $$p_{\theta}(s_{t+1}\mid s_t, a_t)$$ is the transition model and $$p_{\phi}(o_t\mid s_t)$$ is the observation model. Similarly, we solve for $$\theta \text{and} \phi$$ using maximal likelihood 
+
+$$\begin{align}
+&\log \prod_{t=1}^{T}  p_{\phi}(o_{t}\mid s_t) \nonumber \\
+&=\log \mathbb{E}_{(s_t, s_{t+1}) \sim p(s_t, s_{t+1}\mid o_{1:t}, a_{1:t})}\prod_{t=1}^{T}  p_{\theta}(s_{t+1}\mid s_t, a_t) p_{\phi}(o_{t}\mid s_t) \nonumber \\
+&\geq \mathbb{E}_{(s_t, s_{t+1}) \sim p(s_t, s_{t+1}\mid o_{t}, a_{t})} \log \prod_{t=1}^{T}  p_{\theta}(s_{t+1}\mid s_t, a_t) p_{\phi}(o_{t}\mid s_t) \nonumber \\
+&\approx \frac1N \sum_{i=1}^{N} \sum_{t=1}^{T} \log p_{\theta}(s^i_{t+1}\mid s^i_t, a^i_t)+ \log p_{\phi}(o^i_{t}\mid s^i_t) \label{latent_obj}
+\end{align}$$
+
+We maximize equation $$\ref{latent_obj}$$, which is lower bound of the log likelihood, it actually uses one sample estimation for estimating the expectation (in terms of $$(s_t, s_{t+1})$$), more sample can be used.
+
+One issue is that by Bayes' rule, 
+
+$$\begin{align}
+&p(s_t, s_{t+1}\mid o_{t}, a_{t}) \\
+&= p_{\theta}(s_{t+1}\mid s_t, a_t) p(s_t\mid o_t)  \\
+&= p_{\theta}(s_{t+1}\mid s_t, a_t) \frac{ p_{\phi}(o_t\mid s_t)p(s_t) }{p(o_t)}
+\end{align}$$
+
+and $$p(s_t\mid o_t)$$ is intractale. Thus we can learn another neural net $$q_{\psi}(s_t\mid o_t)$$. A full treatment involvs variational inference, which we will cover in future lectures. In this lecture, we simplify the case and model posterior of state as delta function, i.e. $$q_{\psi}(s_t\mid o_t) = \delta(s_t = g_{\psi}(o_t))$$, which is just $$s_t = g_{\psi}(o_t)$$.
+
+Plug this in the objective equation $$\ref{latent_obj}$$, we have
+
+$$\begin{equation}\label{real_obj}
+\frac1N \sum_{i=1}^{N} \sum_{t=1}^{T} \log p_{\theta}(g_{\psi}(o^i_{t+1})\mid g_{\psi}(o^i_t), a^i_t)+ \log p_{\phi}(o^i_{t}\mid g_{\psi}(o^i_t))
+\end{equation}$$
+
+We maximize this to find $$\theta, \phi$$ and $$\psi$$. In case you are wondering, assuming $$s_t$$ can be deterministically derived from $$o_t$$ doesn't indicate $$p_{\phi}(o_{t}\mid s_t)$$ is also a delta function, because $$g_{\psi}(\cdot)$$ can be a one-to-many function.
+
+Lastly, if we want to plan using iLQR or plan better, we usually also want to model the cost function, it can be modeled as a deterministic function like $$r_t = r_{\xi}(s_t, a_t)$$ or stochastically like $$r_t \sim p_{\xi}(r_t\mid s_t, a_t)$$. With the observed transitions and rewards $$\{ (o^i_t, a^i_t, r^i_t) \}_{i,t=1}^{N,T}$$, we similar to how to derived $$\ref{real_obj}$$, we maximize the objective
+
+$$
+\frac1N \sum_{i=1}^{N} \sum_{t=1}^{T} \log p_{\theta}(s^i_{t+1}\mid s^i_t, a^i_t)+ \log p_{\phi}(o^i_{t}\mid s^i_t) + \log p_{\xi}(r^i_t\mid s^i_t, a^i_t)
+$$
+
+Lastly, I want to point out that sometimes it's difficult to build a compact state space for the observations, and directly modeling observations and making prediction on future observations can actually work better. I.e. instead of modeling $$o_t = g_{\psi}(s_t)$$, we model $$p(o_t \mid o_{t-1}, a_t)$$ and plan actions acrodingly. We will not introduce these branch and encourage interested readers to check out [Finn et al. 17'](https://arxiv.org/pdf/1610.00696.pdf) and [Ebert at al 17'](http://proceedings.mlr.press/v78/frederik%20ebert17a/frederik%20ebert17a.pdf), this two papers both directly model observations and plan actions using MPC.
+
+## 4 Demo: [Embed to Control (E2C)](https://arxiv.org/pdf/1506.07365.pdf)
+<iframe width="1424" height="652" src="https://www.youtube.com/embed/fyQ8tY0iaRI" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
