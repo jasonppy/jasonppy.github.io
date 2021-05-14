@@ -59,3 +59,34 @@ Since for every model-based rollout, the initial state is sampled from real worl
 Here we give one instatiation of the general algorithm introduced above, which combines model-based RL with policy gradient methods. The algorithm is called Model-Based Policy Optimization or MBPO [Janner et al. 19'](https://arxiv.org/pdf/1906.08253.pdf):
 
 <div align="center"><img src="../assets/images/285-11-mbpo.png" width="700"></div>
+
+For instatiation with Q-learning, see [Gu et al. 16'](https://arxiv.org/pdf/1603.00748.pdf) and [Feinberg et al 18'](https://arxiv.org/pdf/1803.00101.pdf).
+
+## 3 Use Simpler Policies and Models
+
+### 3.1 LQR with Learned Models
+A local model is a model that is valid only in the neighborhood of one or some trajectories. Previously, we learned (i)LQR, which assumes linear dynamics (approximates dynamics by a linear function), which could be too simple for most scenarios, but it might be a good assumption locally, i.e. for one or a few very close trajectories, we can assume a linear dynamics. Suppose we are given these trajectories, we want fit a linear dynamics to it by linear regression at each time step, and then perform (i)LQR to get actions and execute these actions in the environment, we can get new trajectories, and we can again fit a linear dynamics to these trajectories, and then run (i)LQR and execute the planned actions......
+
+The procedure looks like the following:
+
+<div align="center"><img src="../assets/images/285-11-lqr.png" width="600"></div>
+
+Where the *local* linear dynamics is defined as
+
+$$p(x_{t+1}\mid x_t, u_t) = \mathcal{N}(A_t x_t + B_t u_t + c_t, \Sigma)$$
+
+Where $$A_t, B_t, c_t$$ are to be fitted using trajectories $$\{ \tau_i \}$$. $$\Sigma$$ can be tuned as a hyperparameter or also be estimated from data.
+
+The policy is defined as 
+
+$$p(u_t\mid x_t) = \mathcal{N}(K_t (x_t - \hat{x_t}) + k_t + \hat{u_t}, \Sigma_t)$$
+
+Note that this correspond to iLQR, i.e. $$K_t, k_t$$ are calculated from the fitted dynamics and $$\hat{x_t}, \hat{u_t}$$ are the actual states and actions in the trajectories $$\{ \tau_i \}$$. $$\Sigma_t$$ is set to be $$Q_{u_t, u_t}^{-1}$$, which is also intermediate result of running iLQR. Intuitively, $$Q_{u_t, u_t}$$ is gradient of the cost to go w.r.t. the action. If the gradient is low, that means the total reward doesn't depend very strongly on the action, which means many different actions may lead to similar reward, then it's a good idea to test out different actions, so we want the variance of $$p(u_t\mid x_t)$$ to be high, and vice versa. Setting $$\Sigma_t$$ to be $$Q_{u_t, u_t}^{-1}$$ gives us such property.
+
+One more thing to notice is that since the fitted dynamics is only valid locally, if the action we take lead to very different state distribution then the subsequent actions planned might be very bad and lead to even worse result. Therefore, we need to make sure the new trajectory distribution is close enough to the old distribution. This can be inforced by using again using KL divergence:
+
+$$D_{\text{KL}}(p_{\text{new}}(\tau) \lvert p_{\text{old}}(\tau))$$
+
+For details about how this is implemented, please see [Sergey and Abbeel 14'](https://papers.nips.cc/paper/2014/file/6766aa2750c19aad2fa1b32f36ed4aee-Paper.pdf).
+
+
