@@ -115,3 +115,6 @@ $$\mathcal{L}^i = \sum_{a\in \mathcal{A}_{E_i}} \pi_{E_i(a\mid s)}\log \pi_{\the
 For deteils, please see [Parisotto et al. 16'](https://arxiv.org/pdf/1511.06342.pdf).
 
 
+## 4 Demo: End-to-End Training of Deep Visuomotor Policies 
+[Levine and Finn et al. 16'](https://www.jmlr.org/papers/volume17/15-522/15-522.pdf)
+<iframe width="1424" height="652" src="https://www.youtube.com/embed/Q4bMcUk6pcw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
