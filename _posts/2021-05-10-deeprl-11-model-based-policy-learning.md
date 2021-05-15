@@ -31,7 +31,7 @@ What we can use is backpropagation:
 
 If you are familiar with recurrent neural network, we might realize that the kind of backprop shown above is the so called Backpropagation Through Time or BPTT, which is usually used on recurrent neural nets like LSTM. BPTT famously has the vanishing or exploding gradients issue, because all the jacobians of different time steps get multiplied together. This issue can only get worse in policy learning, because in sequence deep learning, we can choose architectures like LSTM that has good gradient behavior, but in model-based RL, the dynamics has to fit to the data and we don't have control over the gradient behavior.
 
-In the next two sections, we will introduce two popular ways to model-based RL. The first way is a bit controvesal, it does model-free optimization (policy gradient, actor-critic, Q-learning etc.) and use model to only generate sythetic data. Despite looking weird backwards, this idea can work very well in pratice; the second way is to **________________**
+In the next two sections, we will introduce two popular ways to model-based RL. The first way is a bit controvesal, it does model-free optimization (policy gradient, actor-critic, Q-learning etc.) and use model to only generate sythetic data. Despite looking weird backwards, this idea can work very well in pratice; the second way is to use simple local models and local policies, which can be solved using stable algorithms.
 
 ## 2 Model-Free Optimization with a Model
 Reinforcement learning is about getting better by interacting with the world, and the interacting, try-and-error process can be time consuming (even in a simulator sometimes). If we have a mathematical model that represent how the world works, then we can effortlessly generate data (transitions) from it for model-free algorithms to get better. However, it's impossible to have a comprehansive mathematical model of the world, or even of the environment we want to run our RL algorithms. Nevertheless, a learned dynamics is a representation of the environment and we can use it to generate data.
@@ -53,7 +53,7 @@ Model-based rollout step **k** is an very important hyperparameter, since we com
 
 Since for every model-based rollout, the initial state is sampled from real world data, this algorithm can be intuitively understand as imagining different possibilities starting from real world situations:
 
-<div align="center"><img src="../assets/images/285-11-branch.png" width="500"></div>
+<div align="center"><img src="../assets/images/285-11-branch.png" width="300"></div>
 
 
 Here we give one instatiation of the general algorithm introduced above, which combines model-based RL with policy gradient methods. The algorithm is called Model-Based Policy Optimization or MBPO [Janner et al. 19'](https://arxiv.org/pdf/1906.08253.pdf):
@@ -88,5 +88,30 @@ One more thing to notice is that since the fitted dynamics is only valid locally
 $$D_{\text{KL}}(p_{\text{new}}(\tau) \lvert p_{\text{old}}(\tau))$$
 
 For details about how this is implemented, please see [Sergey and Abbeel 14'](https://papers.nips.cc/paper/2014/file/6766aa2750c19aad2fa1b32f36ed4aee-Paper.pdf).
+
+### 3.2 Guided Policy Search
+If we have a bunch of local policies e.g. $$\{\pi_{\text{LQR, i}}\}_{i}$$, which are derived from local models (e.g. LQR models), we can distill the knowledge of these local policies to get a global policy by supervised learning.
+
+The idea above can be view as a special case of a more general framework is known as knowledge distillation ([Hinton et al. 15'](https://arxiv.org/pdf/1503.02531.pdf)). Here we have a bunch of weak policies (local policies) and we can ensemble them to get a strong policy, but rather than directly using the ensemble, we distill knowledge from this ensemble to get one global neural network policy $$\pi_{\theta}$$.We train the neural network using the trajectories we used for training LQR parameters and policies, except that instead of directly train the neural net policy to output the one actual action sequence at each time step, we train the neural net to predict probability of each action given the state.
+
+In order for the algorithm to work better, we want the LQR policy $$\{\pi_{\text{LQR, i}}\}_{i}$$ to be close to the neural net policy $$\pi_{\theta}$$. We use KL divergence to inforce that, and it can be implemented as modifying the cost function of LQR.
+
+The algorithm sketch is the following:
+
+1. Optimize each local policy $$\pi_{\text{LQR, i}}$$ on initial state $$x_{0,i}$$ w.r.t $$\tilde{c}_{k,i}(x_t, u_t)$$
+2. use samples from step one one to train $$\pi_{\theta}$$ to minic each $$\pi_{\text{LQR, i}}$$
+3. update cost function $$\tilde{c}_{k+1,i}(x_t, u_t) = c(x_t, u_t) + \lambda_{k+1, i}\log \pi_{\theta}(u_t\mid x_t)$$. Go to step 1.
+
+Where $$k$$ index is number of the step in the algorithm and $$i$$ index different LQR models which is instantiated by starting from different initial state. Step 3 is for making local policies and the global policy close to each other in terms of KL divergence and $$\lambda_{k+1, i}$$ is the Lagrangian multiplier. This is just a sketch of the algorithm, and for details, please checkout the original paper by [Levine and Finn et al. 16'](https://www.jmlr.org/papers/volume17/15-522/15-522.pdf).
+
+Similar approach can also be extended to multitask transfer scenario:
+
+<div align="center"><img src="../assets/images/285-11-multi.png" width="700"></div>
+
+Where the loss function for training the global policy is
+
+$$\mathcal{L}^i = \sum_{a\in \mathcal{A}_{E_i}} \pi_{E_i(a\mid s)}\log \pi_{\theta}(a\mid s)$$
+
+For deteils, please see [Parisotto et al. 16'](https://arxiv.org/pdf/1511.06342.pdf).
 
 
