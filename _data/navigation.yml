@@ -1,7 +1,7 @@
 main:
   # - title: "Posts by Year"
   #   url: /posts/
-  - title: "Posts by Category"
+  - title: "Posts"
     url: /categories/
   # - title: "Tags"
   #   url: /tags/
