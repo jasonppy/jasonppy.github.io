@@ -3,7 +3,7 @@ permalink: /
 title: "Hello Friends"
 ---
 
-I'm Puyuan Peng (though I usually go by Jason). I'm a first year PhD student in computer science at UT Austin. I'm very fortunate to be advised by [David Harwath](https://www.cs.utexas.edu/~harwath/) and I'm with the [Speech, Audio, and Language Technologies (SALT) Lab](http://saltlab.cs.utexas.edu/). Because coming to Austin, I did my master's in statistics at the University of Chicago, where I spent a wonderful summer working with [Karen Livescu](https://home.ttic.edu/~klivescu/) and [Herman Kamper](https://www.kamperh.com/).
+I'm Puyuan Peng (though I usually go by Jason). I'm a first year PhD student in computer science at UT Austin. I'm very fortunate to have [David Harwath](https://www.cs.utexas.edu/~harwath/) as my advisor and I'm with the [Speech, Audio, and Language Technologies (SALT) Lab](http://saltlab.cs.utexas.edu/). Before coming to Austin, I did my master's in statistics at the University of Chicago, where I spent a wonderful summer working with [Karen Livescu](https://home.ttic.edu/~klivescu/) and [Herman Kamper](https://www.kamperh.com/).
 
 ### Papers
 
