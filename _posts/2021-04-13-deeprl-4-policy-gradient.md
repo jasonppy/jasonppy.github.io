@@ -66,6 +66,12 @@ The following is the REINFORCE algorithm:
 3. estimate gradient: $$\nabla_{\theta}J(\theta) = \frac1N \sum_{i=1}^{N}\left(\sum_{t=1}^{T}\nabla_{\theta}\log \pi_{\theta}(a^i_t\mid s^i_t)\right)\left(\sum_{t=1}^T r^i_t\right)$$
 3. update policy: $$\theta \leftarrow \theta + \alpha\nabla_{\theta}J(\theta)$$. Go to 2.
 
+sdfsdfsdfsd
+
+1. initialize policy $$\pi_{\theta}$$
+2. run policy $$\pi_{\theta}$$ to generate sample trajectories $$\{ \tau^i \}_{i=1}^{N}$$
+3. update policy: $$\theta \leftarrow \theta + \alpha\nabla_{\theta}J(\theta)$$. Go to 2.
+
 Finally I want to point out that the REINFORCE algorithm also works in POMDP, where we don't know state $$s_t$$, but can only observe observation $$o_t$$, which means the policy is $$\pi_{\theta}(a_t\mid o_t)$$. This is clear if we write out the trajectory distribution in POMDP:
 
 $$\begin{equation}\label{pomdp}p_{\theta}(\tau) = p(s_1)\prod_{i=1}^Tp(s_{t+1}\mid s_t, a_t)\pi_{\theta}(a_t\mid o_t)p(o_t\mid s_t)\end{equation}$$

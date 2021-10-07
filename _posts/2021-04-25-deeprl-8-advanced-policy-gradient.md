@@ -12,16 +12,16 @@ At the end of previous lecture, we talked about the issues with Q-learning, one 
 In this section, we derive stable policy gradient methods, by firstly framing them as policy iteration.
 
 ## 1 Policy Gradient as Policy Iteration
-Let's write down the difference between expected return under previous policy $$\pi_{\theta}$$ and under new (updated) policy $$\pi_{\theta'}$$: 
+Let's write down the difference between expected return under previous policy $$q$$ and under new (updated) policy $$\pi_{\theta'}$$: 
 
 $$\begin{align}
 &J(\theta') - J(\theta)\\
 &= \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ \sum_t \gamma^tr(s_t, a_t) \right] - \mathbb{E}_{\tau \sim p_{\theta}(\tau)}\left[ \sum_t \gamma^tr(s_t, a_t) \right] \\
-&= \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ \sum_t \gamma^tr(s_t, a_t) \right] - \mathbb{E}_{s_0 \sim p(s_0)}\left[ V^{\pi_{\theta}}(s_0) \right] \\
-&= \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ \sum_t \gamma^tr(s_t, a_t) \right] - \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ V^{\pi_{\theta}}(s_0) \right] \\
-&= \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ \sum_t \gamma^tr(s_t, a_t) \right] - \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ V^{\pi_{\theta}}(s_0) + \sum_{t=1}^{\infty}\gamma^{t}V^{\pi_{\theta}}(s_{t}) - \sum_{t=1}^{\infty}\gamma^{t}V^{\pi_{\theta}}(s_{t}) \right] \\
-&= \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ \sum_t \gamma^tr(s_t, a_t) \right] + \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ \sum_t\gamma^{t}(\gamma V(s_{t+1}) - V^{\pi_{\theta}}(s_{t})) \right] \\
-&= \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ \sum_t \gamma^t(r(s_t, a_t)\gamma V(s_{t+1}) - V^{\pi_{\theta}}(s_{t})) \right] \\
+&= \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ \sum_t \gamma^tr(s_t, a_t) \right] - \mathbb{E}_{s_0 \sim p(s_0)}\left[ V^{q}(s_0) \right] \\
+&= \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ \sum_t \gamma^tr(s_t, a_t) \right] - \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ V^{q}(s_0) \right] \\
+&= \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ \sum_t \gamma^tr(s_t, a_t) \right] - \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ V^{q}(s_0) + \sum_{t=1}^{\infty}\gamma^{t}V^{q}(s_{t}) - \sum_{t=1}^{\infty}\gamma^{t}V^{q}(s_{t}) \right] \\
+&= \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ \sum_t \gamma^tr(s_t, a_t) \right] + \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ \sum_t\gamma^{t}(\gamma V(s_{t+1}) - V^{q}(s_{t})) \right] \\
+&= \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ \sum_t \gamma^t(r(s_t, a_t) + \gamma V(s_{t+1}) - V^{q}(s_{t})) \right] \\
 &= \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ \sum_t \gamma^t A^{\pi_{\theta}}(s_t, a_t) \right] 
 \end{align}$$
 
@@ -31,14 +31,14 @@ $$\begin{equation}\label{diff}
 J(\theta') - J(\theta) = \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ \sum_t \gamma^t A^{\pi_{\theta}}(s_t, a_t) \right] 
 \end{equation}$$
 
-The difference of expected return equals to the expected value of the advantage of the previous policy $$\pi_{\theta}$$ under the trajectory distribution of the new policy $$\pi_{\theta'}$$. 
+The difference of expected return equals to the expected value of the advantage of the previous policy $$q$$ under the trajectory distribution of the new policy $$\pi_{\theta'}$$. 
 
 Note that we haven't done any policy gradient specific operation, so this equality is universal. We can use this to understand why policy iteration improve the expected return at every iteration i.e. $$J(\theta') - J(\theta) \geq 0$$: in policy iteration, the policy is deterministic and updated as $$\pi'(s) = \text{argmax}_a A^{\pi}(s_t, a_t)$$. Therefore when the $$s_t, a_t$$ are from the new policy $$\pi'$$, we always have $$A^{\pi_{\theta}}(s_t, a_t) \geq 0$$, and thus $$J(\theta') - J(\theta) \geq 0$$.
 
 Now let's consider how to have this monotonic improvement in expected return in policy gradient methods. Well, this cannot be guaranteed theoretically because we need to introduce some approximation in order to derive a policy gradient algorithm from equation $$\ref{diff}$$. Nevertheless, the resulting method --- TRPO --- is the first stable RL algorithm in that during training the return will improve gradually (whereas another popular methods at the time --- DQN --- is very unstable).
 
 ## 2 Trust Region Policy Optimization (TRPO) Setup 
-As a policy gradient method, TRPO aims at directly maximizing equation $$\ref{diff}$$, but this cannot be done because the trajectory distribution is under the new policy $$\pi_{\theta'}$$ while the sample trajectories that we have can onlu come from the previous policy $$\pi_{\theta}$$. 
+As a policy gradient method, TRPO aims at directly maximizing equation $$\ref{diff}$$, but this cannot be done because the trajectory distribution is under the new policy $$\pi_{\theta'}$$ while the sample trajectories that we have can onlu come from the previous policy $$q$$. 
 
 This might reminds you on importance sampling that we used for deriving off-policy policy gradient. Yes, we will rewrite equation $$\ref{diff}$$ using importance sampling:
 
@@ -46,21 +46,21 @@ $$\begin{align}
 &J(\theta') - J(\theta) \\
 &= \mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[ \sum_t \gamma^t A^{\pi_{\theta}}(s_t, a_t) \right] \\
 &= \sum_t\mathbb{E}_{s_t\sim p_{\theta'}(s_t)}\left[ \mathbb{E}_{a_t \sim \pi_{\theta'}} \gamma^t A^{\pi_{\theta}}(s_t, a_t)\right]\\
-&= \sum_t\mathbb{E}_{s_t\sim p_{\theta'}(s_t)}\left[ \mathbb{E}_{a_t \sim \pi_{\theta}} \frac{\pi_{\theta'}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right] \label{diff_importance}
+&= \sum_t\mathbb{E}_{s_t\sim p_{\theta'}(s_t)}\left[ \mathbb{E}_{a_t \sim q} \frac{\pi_{\theta'}(a_t\mid s_t)}{q(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right] \label{diff_importance}
 \end{align}$$
 
 However, even though we don't need to sample from $$p_{\theta'}(\tau)$$ now, $$p_{\theta'}(s_t)$$ is still impossible. A natural question is, can we just use $$p_{\theta}(s_t)$$? I.e. approximating the equation above by
 
 $$\begin{align}
-&\sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim \pi_{\theta}} \frac{\pi_{\theta'}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right] \\
-&= \mathbb{E}_{\tau \sim p_{\theta}(\tau)}\left[ \sum_t \frac{\pi_{\theta'}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t) \right] \label{final}
+&\approx \sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim q} \frac{\pi_{\theta'}(a_t\mid s_t)}{q(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right] \\
+&= \mathbb{E}_{\tau \sim p_{\theta}(\tau)}\left[ \sum_t \frac{\pi_{\theta'}(a_t\mid s_t)}{q(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t) \right] \label{final}
 \end{align}$$
 
-Eqaution $$\ref{final}$$ will lead to almost the same gradient as the off-policy policy gradient, but with reward $$r(s_t, a_t)$$ begin replaced by advantage $$A^{\pi_{\theta}}(s_t, a_t)$$. And you might remember that we also used $$p_{\theta}(s_t)$$ to approaximate $$p_{\theta'}(s_t)$$ and briefly mentioned that this approximation error "is bounded when the **gap** between $$\pi_{\theta}$$ and $$\pi_{\theta'}$$ are not too big".
+Eqaution $$\ref{final}$$ will lead to almost the same gradient as the off-policy policy gradient, but with reward $$r(s_t, a_t)$$ begin replaced by advantage $$A^{\pi_{\theta}}(s_t, a_t)$$. And you might remember that we also used $$p_{\theta}(s_t)$$ to approaximate $$p_{\theta'}(s_t)$$ and briefly mentioned that this approximation error "is bounded when the **gap** between $$q$$ and $$\pi_{\theta'}$$ are not too big".
 
-Now let's try to quantitative give the **gap** between  $$\pi_{\theta}$$ and $$\pi_{\theta'}$$. The first quantitative gap actually has been introduced in lecture 2 when we introduce the error bound on DAgger for imitation learning --- we define $$\pi_{\theta'}$$ is close to $$\pi_{\theta}$$ if 
+Now let's try to quantitative give the **gap** between  $$q$$ and $$\pi_{\theta'}$$. The first quantitative gap actually has been introduced in lecture 2 when we introduce the error bound on DAgger for imitation learning --- we define $$\pi_{\theta'}$$ is close to $$\pi_{\theta}$$ if 
 
-$$\begin{equation}\label{cond1}\left| \pi_{\theta'}(a_t\mid s_t) - \pi_{\theta}(a_t\mid s_t)\right|< \epsilon, \forall s_t\end{equation}$$
+$$\begin{equation}\label{cond1}\left| \pi_{\theta'}(a_t\mid s_t) - \pi(a_t\mid s_t)\right|< \epsilon, \forall s_t\end{equation}$$
 
 This will give
 
@@ -88,17 +88,30 @@ $$\begin{align*}
 Therefore, we have
 
 $$\begin{align}
-&\sum_t\mathbb{E}_{s_t\sim p_{\theta'}(s_t)}\left[ \mathbb{E}_{a_t \sim \pi_{\theta}} \frac{\pi_{\theta'}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right] \\
-&\geq \sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim \pi_{\theta}} \frac{\pi_{\theta'}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right] - \sum_t 2\epsilon t C
+&\sum_t\mathbb{E}_{s_t\sim p_{\theta'}(s_t)}\left[ \mathbb{E}_{a_t \sim q} \frac{\pi_{\theta'}(a_t\mid s_t)}{q(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right] \\
+&\geq \sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim q} \frac{\pi_{\theta'}(a_t\mid s_t)}{q(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right] - \sum_t 2\epsilon t C \\
+&\geq \sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim q} \frac{\pi_{\theta'}(a_t\mid s_t)}{q(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right] - \frac{4\epsilon\gamma}{(1-\gamma)}D_{\text{KL}}^{\text{max}}(\theta,\theta') \\
 \end{align}$$
+
+<!-- $$\begin{align}
+&\max_{\theta'} \sum_{t}\mathbb{E}_{s\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim q} \frac{\pi_{\theta'}(a_t\mid s_t)}{q(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right] \\
+&\text{s.t.} \, \, \mathbb{E}_{s\sim p_{\theta}(s)}\left[D_{\text{KL}}(\pi_{\theta}(\cdot|s) \lVert \pi_{\theta'}(\cdot|s))\right] \leq \delta
+\end{align}$$ -->
+
+
+<!-- $$\begin{align}
+&\max_{\theta'}\sum_{t=0}^{T} \frac{\pi_{\theta'}(a_t|s_t)}{q(a_t|s_t)}\sum_{t'=t}^{T}\gamma^{t'-t}r_{t'} \\
+&\text{s.t.} \, \,\frac12 (\theta' - \theta)^T \left[\frac1T \sum_{t=1}^{T} \frac{\partial^2}{\partial \theta_i \partial \theta_j} D_\text{KL}(\pi_{\theta}(\cdot\mid s_t) \lVert \pi_{\theta'}(\cdot\mid s_t))\right](\theta' - \theta) < \delta
+\end{align}$$ -->
+
 
 Where  $$C \propto O(Tr_{\text{max}})$$ in finite horizon case or $$C \propto O(\frac{r_{\text{max}}}{1-\gamma})$$ in infinite horizon case. This tells us two things: first, the approximate objective 
 
-$$\sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim \pi_{\theta}} \frac{\pi_{\theta'}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right]$$
+$$\sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim q} \frac{\pi_{\theta'}(a_t\mid s_t)}{q(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right]$$
 
 is a lower bound of the original objective
 
-$$\sum_t\mathbb{E}_{s_t\sim p_{\theta'}(s_t)}\left[ \mathbb{E}_{a_t \sim \pi_{\theta}} \frac{\pi_{\theta'}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right]$$
+$$\sum_t\mathbb{E}_{s_t\sim p_{\theta'}(s_t)}\left[ \mathbb{E}_{a_t \sim q} \frac{\pi_{\theta'}(a_t\mid s_t)}{q(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right]$$
 
 and this is good as maximizing this approximate objective is maximizing an lower bound on the thing that we initially want maximize. Second, the error bound of the approximation is $$\sum_t 2\epsilon t C$$, while this error might seem big because C is linearly time and maximal reward, but we can keep it very small by keeping the gap between new and old policy to be very small.
 
@@ -107,7 +120,7 @@ But how do we impose this constraint (equation $$\ref{cond1}$$) in practice?
 Well, it's not a very convenient constraint to use in practice, luckily, we have
 
 $$\begin{equation}\label{cond2}
-\left| \pi_{\theta'}(a_t\mid s_t) - \pi_{\theta}(a_t\mid s_t)\right| <  \sqrt{\frac12 D_\text{KL}(\pi_{\theta'} \lVert \pi_{\theta})}, \forall s_t
+\left| \pi_{\theta'}(a_t\mid s_t) - q(a_t\mid s_t)\right| <  \sqrt{\frac12 D_\text{KL}(\pi_{\theta} \lVert \pi_{\theta'})}, \forall s_t
 \end{equation}$$
 
 and the KL divergence has nice properties that make it much easier to approximate!
@@ -115,8 +128,8 @@ and the KL divergence has nice properties that make it much easier to approximat
 Now, we have the Trust Region Policy Optimization set up:
 
 $$\begin{align}
-&\theta' \leftarrow \text{argmax}_{\theta'}\, \sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim \pi_{\theta}} \frac{\pi_{\theta'}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right]\\
-& \text{subject to } D_\text{KL}(\pi_{\theta'}(a_t\mid s_t) \lVert \pi_{\theta}(a_t\mid s_t)) < \epsilon
+&\theta' \leftarrow \text{argmax}_{\theta'}\, \sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim q} \frac{\pi_{\theta'}(a_t\mid s_t)}{q(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right]\\
+& \text{subject to } D_\text{KL}(\pi_{\theta} \lVert \pi_{\theta'}) < \epsilon
 \end{align}$$
 
 For small enough $$\epsilon$$, this is gauranteed to improve $$J(\theta') - J(\theta)$$.
@@ -130,8 +143,8 @@ Dual gradient ascent introduces augmented the objective with the Lagrangian mult
 
 $$\begin{align}
 \mathcal{L}(\theta', \lambda) 
-&= \sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim \pi_{\theta}} \frac{\pi_{\theta'}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right] \\
-&- \lambda (D_\text{KL}(\pi_{\theta'}(a_t\mid s_t) \lVert \pi_{\theta}(a_t\mid s_t)) - \epsilon)
+&= \sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim q} \frac{\pi_{\theta'}(a_t\mid s_t)}{q(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right] \\
+&- \lambda (D_\text{KL}(\pi_{\theta} \lVert \pi_{\theta'}) - \epsilon)
 \end{align}$$
 
 This can be maximized by running the following two steps iteratively:
@@ -145,7 +158,7 @@ Natural policy gradient was introduced much earlier than TRPO, but it turns out 
 
 To ease the notation, let's denote the objective as
 
-$$\bar{A}(\theta') := \sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim \pi_{\theta}} \frac{\pi_{\theta'}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right]$$
+$$\bar{A}(\theta') := \sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim q} \frac{\pi_{\theta'}(a_t\mid s_t)}{q(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right]$$
 
 The idea of natural policy gradient is to use linear approximation to the objective $$\bar{A}(\theta')$$ and quadratic approximation to the constraint. This will lead to a very simple optimization problem that can be solved analytically by hand.
 
@@ -153,8 +166,8 @@ Use first order Taylor expension on $$\bar{A}(\theta')$$, we have
 
 $$\begin{align*}
 &\bar{A}(\theta') \\
-&\approx \bar{A}(\theta) + \nabla_{\theta}\bar{A}(\theta)^T(\theta' - \theta)\\
-&\propto \nabla_{\theta}\bar{A}(\theta)^T(\theta' - \theta)
+&\approx \bar{A}(\theta) + \nabla_{\theta'}\bar{A}(\theta)^T(\theta' - \theta)\\
+&\propto \nabla_{\theta'}\bar{A}(\theta)^T(\theta' - \theta)
 \end{align*}$$
 
 Where we drop the constant in terms of $$\theta'$$
@@ -162,9 +175,9 @@ Where we drop the constant in terms of $$\theta'$$
 As a side note, we have 
 
 $$\begin{align}
-&\nabla_{\theta}\bar{A}(\theta) \\
-&= \sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim \pi_{\theta}} \frac{\pi_{\theta}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}\gamma^t \nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t) A^{\pi_{\theta}}(s_t, a_t)\right] \\
-&= \sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim \pi_{\theta}} \gamma^t \nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t) A^{\pi_{\theta}}(s_t, a_t)\right] \\
+&\nabla_{\theta'}\bar{A}(\theta) \\
+&= \sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim q} \frac{\pi_{\theta}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}\gamma^t \nabla_{\theta}\log \pi_{\theta'}(a_t\mid s_t) A^{\pi_{\theta}}(s_t, a_t)\right] \\
+&= \sum_t\mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim q} \gamma^t \nabla_{\theta}\log \pi_{\theta}(a_t\mid s_t) A^{\pi_{\theta}}(s_t, a_t)\right] \\
 \end{align}$$
 
 Which is actually the actor-critic policy gradient.
@@ -172,14 +185,16 @@ Which is actually the actor-critic policy gradient.
 Then we expend the constraint to the second order
 
 $$\begin{align*}
-D_\text{KL}(\pi_{\theta'}(a_t\mid s_t) \lVert \pi_{\theta}(a_t\mid s_t)) \approx \frac12 (\theta' - \theta)^T\nabla^2 D_\text{KL}(\pi_{\theta'}(a_t\mid s_t) \lVert \pi_{\theta}(a_t\mid s_t))(\theta' - \theta)
+D_\text{KL}(\pi_{\theta} \lVert \pi_{\theta'}) \approx \frac12 (\theta' - \theta)^T\nabla^2 D_\text{KL}(\pi_{\theta} \lVert \pi_{\theta'})(\theta' - \theta)
 \end{align*}$$
 
 Where the constant and first order term can be [shown](https://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/lecture-notes/lecture20-2pp.pdf) to be both zeros. 
 We can approximate the constraint using sample:
 
+$$\{(s_t, a_t, r_t)\}_{t=0}^{T}$$
+
 $$\begin{equation}\label{second}
-\frac12 (\theta' - \theta)^T \left[\frac1T \sum_{t=1}^{T} \frac{\partial^2}{\partial \theta_i \partial \theta_j} D_\text{KL}(\pi_{\theta'}(a_t\mid s_t) \lVert \pi_{\theta}(a_t\mid s_t))\right](\theta' - \theta) < \epsilon
+\frac12 (\theta' - \theta)^T \left[\frac1T \sum_{t=1}^{T} \frac{\partial^2}{\partial \theta_i \partial \theta_j} D_\text{KL}(\pi_{\theta}(\cdot\mid s_t) \lVert \pi_{\theta'}(\cdot\mid s_t))\right](\theta' - \theta) < \delta
 \end{equation}$$
 
 Where the KL term can usually be calculated analytically.
@@ -187,7 +202,7 @@ Where the KL term can usually be calculated analytically.
 Also, since
 
 $$\begin{equation*}
-\nabla^2 D_\text{KL}(\pi_{\theta'}(a_t\mid s_t) \lVert \pi_{\theta}(a_t\mid s_t)) = \mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \nabla_{\theta}\log\pi_{\theta}(a_t\mid s_t) \nabla_{\theta}\log\pi_{\theta}(a_t\mid s_t)^T \right]
+\nabla^2 D_\text{KL}(\pi_{\theta} \lVert \pi_{\theta'}) = \mathbb{E}_{s_t\sim p_{\theta}(s_t)}\left[ \nabla_{\theta}\pi_{\theta}(a_t\mid s_t) \nabla_{\theta}\log\pi_{\theta}(a_t\mid s_t)^T \right]
 \end{equation*}$$
 
 where the right hand side is the Fisher information matrix of $$\pi_{\theta}(a_t\mid s_t)$$.
@@ -223,7 +238,7 @@ PPO is proposed to deal with the issues of TRPO while maintain it's advantages. 
 
 Essentially PPO differs from TRPO by the way it formulize the trust region in optimization. Let
 
-$$r_t(\theta') = \frac{\pi_{\theta'}(a_t\mid s_t)}{\pi_{\theta}(a_t\mid s_t)}$$
+$$r_t(\theta') = \frac{\pi_{\theta'}(a_t\mid s_t)}{q(a_t\mid s_t)}$$
 
 To makes sure the new and old policy are close, in TRPO, we formulize it as a constraint on the KL divergence; in PPO, we directly incorporate it in the object:
 

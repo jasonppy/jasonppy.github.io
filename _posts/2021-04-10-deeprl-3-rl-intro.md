@@ -63,7 +63,7 @@ In this course, we will mainly consider MDPs. We even use the observations (i.e.
 ## 2 The Goal of Reinforcement Learning
 Before presenting the goal of reinforcement learning, we have one more very important concept to introduce --- **trajectory** $$\tau:=(s_1, a_1, s_2, a_2, \cdots, s_T, a_T)$$. In MDPs, we can write out the distribution of $$\tau$$:
 
-$$\begin{equation}\label{traj_dist}p_{\theta}(\tau) = p_{\theta}(s_1, a_1, \cdots, s_T, a_T)= p(s_1)\prod_{i=1}^{T}\pi_{\theta}(a_t\mid s_t)p(s_{t+1}\mid s_t, a_t)\end{equation}$$
+$$\begin{equation}\label{traj_dist}p_{\theta}(\tau) = p_{\theta}(s_1, a_1, \cdots, s_T, a_T)= p(s_1)\prod_{t=1}^{T}\pi_{\theta}(a_t\mid s_t)p(s_{t+1}\mid s_t, a_t)\end{equation}$$
 
 This distribution can also be writen as $$p_{\theta}(\tau) = \prod_{t=1}^{T}p_{\theta}(s_{t+1}, a_{t+1}\mid s_t, a_t)$$, where $$p_{\theta}(s_{t+1},a_{t+1}\mid s_t, a_t) = p(s_{t+1}\mid s_t, a_t)\pi_{\theta}(a_{t+1}\mid s_{t+1})$$
 
