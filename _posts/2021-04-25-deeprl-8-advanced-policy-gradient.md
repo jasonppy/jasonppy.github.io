@@ -95,7 +95,7 @@ $$\begin{align}
 
 <!-- $$\begin{align}
 &\max_{\theta'} \sum_{t}\mathbb{E}_{s\sim p_{\theta}(s_t)}\left[ \mathbb{E}_{a_t \sim q} \frac{\pi_{\theta'}(a_t\mid s_t)}{q(a_t\mid s_t)}\gamma^t A^{\pi_{\theta}}(s_t, a_t)\right] \\
-&\text{s.t.} \, \, \mathbb{E}_{s\sim p_{\theta}(s)}\left[D_{\text{KL}}(\pi_{\theta}(\cdot|s) \lVert \pi_{\theta'}(\cdot|s))\right] \leq \delta
+&\text{s.t.} \, \, \max_{s\sim p_{\theta}(s)}\left[D_{\text{KL}}(\pi_{\theta}(\cdot|s) \lVert \pi_{\theta'}(\cdot|s))\right] \leq \delta
 \end{align}$$ -->
 
 
