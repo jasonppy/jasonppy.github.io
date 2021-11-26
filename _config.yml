@@ -57,7 +57,7 @@ plugins:
 
 author:
   name             : "Puyuan Peng"
-  avatar           : "./assets/images/me_compressed.jpeg"
+  avatar           : "./assets/images/longhorn_and_me_compressed.png"
   bio              : "PhD Student in Computer Science"
   location         : "Austin, TX"
   links:
