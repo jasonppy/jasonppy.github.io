@@ -6,6 +6,10 @@ I'm Puyuan Peng (I also go by Jason). I'm a first year PhD student in computer s
 
 ### Papers
 
+[Self-Supervised Representation Learning for Speech Using Visual Grounding and Masked Language Modeling](https://jasonppy.github.io/about/)  
+Puyuan Peng, David Harwath  
+The 2nd Workshop on Self-supervised Learning for Audio and Speech Processing at AAAI, 2022
+
 [Fast-Slow Transformer for Visually Grounding Speech](https://arxiv.org/pdf/2109.08186.pdf)  
 Puyuan Peng, David Harwath  
 arXiv, 2021
@@ -13,4 +17,4 @@ arXiv, 2021
   
 [A Correspondence Variational Autoencoder for Unsupervised Acoustic Word Embeddings](https://arxiv.org/abs/2012.02221)  
 Puyuan Peng, Herman Kamper, and Karen Livescu  
-In NeurIPS Workshop on Self-Supervised Learning for Speech and Audio Processing, 2020
+The 1st Workshop on Self-Supervised Learning for Speech and Audio Processing at NeurIPS, 2020
