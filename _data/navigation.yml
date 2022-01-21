@@ -1,8 +1,8 @@
 main:
   # - title: "Posts by Year"
   #   url: /posts/
-  # - title: "About"
-  #   url: /about/
+  - title: "About"
+    url: /about/
   - title: "Posts"
     url: /categories/
   # - title: "Tags"
