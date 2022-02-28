@@ -2,7 +2,7 @@
 title: "Hello Friends"
 permalink: /about/
 ---
-I'm Puyuan Peng (I also go by Jason). I'm a first year PhD student in computer science at UT Austin. I'm very fortunate to have [David Harwath](https://www.cs.utexas.edu/~harwath/) as my advisor and I'm with the [Speech, Audio, and Language Technologies (SALT) Lab](http://saltlab.cs.utexas.edu/). Before coming to Austin, I did my master's in statistics at the University of Chicago, where I spent a wonderful summer working with [Karen Livescu](https://home.ttic.edu/~klivescu/) and [Herman Kamper](https://www.kamperh.com/). I did my undergrad in Math and Applied Math at Beijing Normal University.
+<!-- I'm Puyuan Peng (I also go by Jason). I'm a first year PhD student in computer science at UT Austin. I'm very fortunate to have [David Harwath](https://www.cs.utexas.edu/~harwath/) as my advisor and I'm with the [Speech, Audio, and Language Technologies (SALT) Lab](http://saltlab.cs.utexas.edu/). Before coming to Austin, I did my master's in statistics at the University of Chicago, where I spent a wonderful summer working with [Karen Livescu](https://home.ttic.edu/~klivescu/) and [Herman Kamper](https://www.kamperh.com/). I did my undergrad in Math and Applied Math at Beijing Normal University.
 
 ### Papers
 
@@ -17,4 +17,4 @@ arXiv, 2021
   
 [A Correspondence Variational Autoencoder for Unsupervised Acoustic Word Embeddings](https://arxiv.org/abs/2012.02221)  
 Puyuan Peng, Herman Kamper, and Karen Livescu  
-The 1st Workshop on Self-Supervised Learning for Speech and Audio Processing at NeurIPS, 2020
+The 1st Workshop on Self-Supervised Learning for Speech and Audio Processing at NeurIPS, 2020 -->
