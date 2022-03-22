@@ -1,5 +1,4 @@
 ---
-title: "Hello Friends"
 redirect_from: /about/
 permalink: /
 ---
@@ -12,15 +11,15 @@ In my free time, I like to workout and sing. [Here](https://youtu.be/h-7TFc5pBuk
 
 Self-Supervised Representation Learning for Speech Using Visual Grounding and Masked Language Modeling  
 Puyuan Peng, David Harwath  
-The 2nd Workshop on Self-supervised Learning for Audio and Speech Processing at AAAI, 2022  
+*The 2nd Workshop on Self-supervised Learning for Audio and Speech Processing at AAAI, 2022*  
 [PDF](https://arxiv.org/pdf/2202.03543.pdf) [code](https://github.com/jasonppy/FaST-VGS-Family)
 
 Fast-Slow Transformer for Visually Grounding Speech  
 Puyuan Peng, David Harwath  
-ICASSP, 2022  
+*ICASSP, 2022*  
 [PDF](https://arxiv.org/pdf/2109.08186.pdf) [code](https://github.com/jasonppy/FaST-VGS-Family)
 
 A Correspondence Variational Autoencoder for Unsupervised Acoustic Word Embeddings  
 Puyuan Peng, Herman Kamper, and Karen Livescu  
-The 1st Workshop on Self-Supervised Learning for Speech and Audio Processing at NeurIPS, 2020  
+*The 1st Workshop on Self-Supervised Learning for Speech and Audio Processing at NeurIPS, 2020*  
 [PDF](https://arxiv.org/abs/2012.02221)
