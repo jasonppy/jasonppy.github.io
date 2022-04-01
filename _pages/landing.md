@@ -16,7 +16,8 @@ Puyuan Peng, David Harwath
 
 **MAE-AST: Masked Autoencoding Audio Spectrogram Transformer**  
 Alan Baade, Puyuan Peng, David Harwath  
-*arXiv*  
+*arXiv 2203.16691*  
+[PDF](https://arxiv.org/pdf/2203.16691.pdf)
 
 **Self-Supervised Representation Learning for Speech Using Visual Grounding and Masked Language Modeling**  
 Puyuan Peng, David Harwath  
