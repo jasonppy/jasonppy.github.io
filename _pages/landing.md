@@ -20,24 +20,24 @@ Jan 2022 at [Cognitive Machine Learning Group](https://cognitive-ml.fr/), Depart
 **Word Discovery in Visually Grounded, Self-Supervised Speech Models**  
 Puyuan Peng, David Harwath  
 *arXiv 2203.15081*  
-[PDF](https://arxiv.org/pdf/2203.15081.pdf) [code](https://github.com/jasonppy/word-discovery)  
+[pdf](https://arxiv.org/pdf/2203.15081.pdf) [code](https://github.com/jasonppy/word-discovery)  
 
 **MAE-AST: Masked Autoencoding Audio Spectrogram Transformer**  
 Alan Baade, Puyuan Peng, David Harwath  
 *arXiv 2203.16691*  
-[PDF](https://arxiv.org/pdf/2203.16691.pdf)
+[pdf](https://arxiv.org/pdf/2203.16691.pdf) [code](https://github.com/AlanBaade/MAE-AST-Public)
 
 **Self-Supervised Representation Learning for Speech Using Visual Grounding and Masked Language Modeling**  
 Puyuan Peng, David Harwath  
 *The 2nd Workshop on Self-supervised Learning for Audio and Speech Processing at AAAI, 2022*  
-[PDF](https://arxiv.org/pdf/2202.03543.pdf) [code](https://github.com/jasonppy/FaST-VGS-Family)  
+[pdf](https://arxiv.org/pdf/2202.03543.pdf) [code](https://github.com/jasonppy/FaST-VGS-Family)  
 
 **Fast-Slow Transformer for Visually Grounding Speech**  
 Puyuan Peng, David Harwath  
 *ICASSP, 2022*  
-[PDF](https://arxiv.org/pdf/2109.08186.pdf) [code](https://github.com/jasonppy/FaST-VGS-Family)
+[pdf](https://arxiv.org/pdf/2109.08186.pdf) [code](https://github.com/jasonppy/FaST-VGS-Family)
 
 **A Correspondence Variational Autoencoder for Unsupervised Acoustic Word Embeddings**  
 Puyuan Peng, Herman Kamper, and Karen Livescu  
 *The 1st Workshop on Self-Supervised Learning for Speech and Audio Processing at NeurIPS, 2020*  
-[PDF](https://arxiv.org/abs/2012.02221)
+[pdf](https://arxiv.org/abs/2012.02221)
