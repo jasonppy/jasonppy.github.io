@@ -3,9 +3,11 @@ redirect_from: /about/
 permalink: /
 ---
 
-Hey! I'm Puyuan Peng (I also go by Jason). I'm a first year PhD student in computer science at UT Austin. I'm very fortunate to have [David Harwath](https://www.cs.utexas.edu/~harwath/) as my advisor and I'm with the [Speech, Audio, and Language Technologies (SALT) Lab](http://saltlab.cs.utexas.edu/). Before coming to Austin, I did my master's in statistics at the University of Chicago, where I spent a wonderful summer working with [Karen Livescu](https://home.ttic.edu/~klivescu/) and [Herman Kamper](https://www.kamperh.com/). I did my undergrad in Math and Applied Math at Beijing Normal University.
+Hey! I'm Puyuan Peng. I'm a first year PhD student in computer science at UT Austin. I'm very fortunate to have [David Harwath](https://www.cs.utexas.edu/~harwath/) as my advisor and I'm with the [Speech, Audio, and Language Technologies (SALT) Lab](http://saltlab.cs.utexas.edu/). Before coming to Austin, I did my master's in statistics at the University of Chicago, where I spent a wonderful summer working with [Karen Livescu](https://home.ttic.edu/~klivescu/) and [Herman Kamper](https://www.kamperh.com/). I did my undergrad in Math and Applied Math at Beijing Normal University.
 
-In my free time, I like to workout and [sing](https://youtu.be/h-7TFc5pBuk).
+In my free time, I like to workout and [sing](https://youtu.be/h-7TFc5pBuk).  
+
+contact: pyp [at] utexas [dot] edu  
 
 ## Talks
 #### Visually Grounded Speech Processing and Understanding
