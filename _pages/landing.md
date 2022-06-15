@@ -19,12 +19,12 @@ Jan 2022 at [Cognitive Machine Learning Group](https://cognitive-ml.fr/), Depart
 
 **Word Discovery in Visually Grounded, Self-Supervised Speech Models**  
 Puyuan Peng, David Harwath  
-*arXiv 2203.15081*  
+*Interspeech, 2022*  
 [pdf](https://arxiv.org/pdf/2203.15081.pdf) [code](https://github.com/jasonppy/word-discovery)  
 
 **MAE-AST: Masked Autoencoding Audio Spectrogram Transformer**  
 Alan Baade, Puyuan Peng, David Harwath  
-*arXiv 2203.16691*  
+*Interspeech, 2022*   
 [pdf](https://arxiv.org/pdf/2203.16691.pdf) [code](https://github.com/AlanBaade/MAE-AST-Public)
 
 **Self-Supervised Representation Learning for Speech Using Visual Grounding and Masked Language Modeling**  
