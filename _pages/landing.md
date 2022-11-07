@@ -19,12 +19,13 @@ Jan 2022 at [Cognitive Machine Learning Group](https://cognitive-ml.fr/), Depart
 (\*denotes equal contribution)  
 
 **Textless Phrase Structure Induction From Visually-Grounded Speech**  
-Cheng-I Jeff Lai*, Freda Shi*, <u>Puyuan Peng*</u>, Yoon Kim, Kevin Gimpel, Shiyu Chang, Yung-Sung Chuang, Saurabhchand Bhati, David Cox, David Harwath, Yang Zhang, Karen Livescu, James Glass  
-*under review*  
+Cheng-I Jeff Lai\*, Freda Shi\*, <u>Puyuan Peng*</u>, Yoon Kim, Kevin Gimpel, Shiyu Chang, Yung-Sung Chuang, Saurabhchand Bhati, David Cox, David Harwath, Yang Zhang, Karen Livescu, James Glass  
+*technical report*  
 
 **Zero-shot Video Moment Retrieval With Off-the-Shelf Models**  
-Anuj Diwan*, <u>Puyuan Peng*</u>, Raymond J. Mooney  
-*Workshop on Transfer Learning for Natural Language Processing, 2022*  
+Anuj Diwan\*, <u>Puyuan Peng*</u>, Raymond J. Mooney  
+*Workshop on Transfer Learning for Natural Language Processing, 2022*   
+[pdf](https://arxiv.org/pdf/2211.02178.pdf) [code](https://jasonppy.github.io/)
 
 **Word Discovery in Visually Grounded, Self-Supervised Speech Models**  
 <u>Puyuan Peng</u>, David Harwath  
