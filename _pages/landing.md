@@ -14,7 +14,7 @@ In my free time, I try to workout and sing ([here](https://youtu.be/h-7TFc5pBuk)
 contact: pyp [at] utexas [dot] edu  
 
 ## Papers 
-(\*denotes equal contribution)  
+(The asterisk '\*' denotes equal contribution)  
 
 **Prompting the Hidden Talent of Web-Scale Speech Models for Zero-Shot Task Generalization**  
 <u>Puyuan Peng</u>, Brian Yan, Shinji Watanabe, David Hawarth  
