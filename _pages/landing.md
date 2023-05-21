@@ -3,20 +3,31 @@ redirect_from: /about/
 permalink: /
 ---
 
-Hey! I'm Puyuan Peng. I'm a second year PhD student in computer science at UT Austin. I'm very fortunate to have [David Harwath](https://www.cs.utexas.edu/~harwath/) as my advisor and I'm with the [Speech, Audio, and Language Technologies (SALT) Lab](http://saltlab.cs.utexas.edu/). Before coming to Austin, I did my master's in statistics at the University of Chicago, where I spent a wonderful summer working with [Karen Livescu](https://home.ttic.edu/~klivescu/) and [Herman Kamper](https://www.kamperh.com/). I did my undergrad in Math and Applied Math at Beijing Normal University.
+Hi! I'm Puyuan Peng, a second year Computer Science PhD student at [UT Austin](https://www.utexas.edu/), working mainly on speech processing and multimodal learning. I'm very fortunate to have [David Harwath](https://www.cs.utexas.edu/~harwath/) as my advisor.
 
-In my free time, I like to workout and [sing](https://youtu.be/h-7TFc5pBuk).  
+In addition to my advisor, I have the pleasure to work with and learn from many amazing senior researchers, including (in chronological order): [Karen Livescu](https://home.ttic.edu/~klivescu/), [Herman Kamper](https://www.kamperh.com/), [Raymond Mooney](https://www.cs.utexas.edu/~mooney/), [James Glass](https://people.csail.mit.edu/jrg/), [Abdelrahman Mohamed](https://scholar.google.com/citations?hl=en&user=tJ_PrzgAAAAJ), [Jonathan Le Roux](https://www.jonathanleroux.org/), [Chiori Hori](https://www.merl.com/people/chori), [Shinji Watanabe](https://sites.google.com/view/shinjiwatanabe), [Shang-Wen Li](https://swdanielli.github.io/), [Okko Räsänen](https://webpages.tuni.fi/specog/index.html), etc.
+
+I have a Master's degree in Statistics from [The University of Chicago](https://stat.uchicago.edu/alumni/ms-alumni/), and a Bachelor's degree in Mathematics from [Beijing Normal University](https://english.bnu.edu.cn/). 
+
+In my free time, I try to workout and sing ([here](https://youtu.be/h-7TFc5pBuk) is a funny video).  
 
 contact: pyp [at] utexas [dot] edu  
 
-## Talks
-#### Visually Grounded Speech Processing and Understanding
-May 2022 at [Developmental Intelligence Laboratory](https://www.la.utexas.edu/users/dil/), Department of Psychology, UT Austin, USA  
-Jan 2022 at [Karen Livescu Group](https://home.ttic.edu/~klivescu/),  Toyota Technological Institute at Chicago, USA.  
-Jan 2022 at [Cognitive Machine Learning Group](https://cognitive-ml.fr/), Departement d’Etudes Cognitives, Ecole Normale Supérieure, France.  
-
-## Papers
+## Papers 
 (\*denotes equal contribution)  
+**Prompting the Hidden Talent of Web-Scale Speech Models for Zero-Shot Task Generalization**  
+<u>Puyuan Peng</u>, Brian Yan, Shinji Watanabe, David Hawarth  
+*Interspeech, 2023*  
+[pdf](https://arxiv.org/abs/2305.11095) [code](https://github.com/jasonppy/promptingwhisper)
+
+**Syllable Discovery and Cross-Lingual Generalization in a Visually Grounded, Self-Supervised Speech Model**  
+<u>Puyuan Peng</u>, Shang-Wen Li, Okko Räsänen, Abdelrahman Mohamed, David Harwath  
+*Interspeech, 2023*  
+[code](https://github.com/jasonppy/syllable-discovery)  
+
+**Style-transfer based Speech and Audio-visual Scene understanding for Robot Action Sequence Acquisition from Videos**  
+Chiori Hori, <u>Puyuan Peng</u>, David Harwath, Xinyu Liu, Kei Ota, Siddarth Jain, Radu Corcodel, Devesh Jha, Diego Romeres, Jonathan Le Roux  
+*Interspeech, 2023*  
 
 **Textless Phrase Structure Induction From Visually-Grounded Speech**  
 Cheng-I Jeff Lai\*, Freda Shi\*, <u>Puyuan Peng*</u>, Yoon Kim, Kevin Gimpel, Shiyu Chang, Yung-Sung Chuang, Saurabhchand Bhati, David Cox, David Harwath, Yang Zhang, Karen Livescu, James Glass  
@@ -51,3 +62,8 @@ Alan Baade, <u>Puyuan Peng</u>, David Harwath
 <u>Puyuan Peng</u>, Herman Kamper, and Karen Livescu  
 *The 1st Workshop on Self-Supervised Learning for Speech and Audio Processing at NeurIPS, 2020*  
 [pdf](https://arxiv.org/abs/2012.02221)
+
+## Talks
+May 2022 at [Developmental Intelligence Laboratory](https://www.la.utexas.edu/users/dil/), Department of Psychology, UT Austin, USA  
+Jan 2022 at [Karen Livescu Group](https://home.ttic.edu/~klivescu/),  Toyota Technological Institute at Chicago, USA.  
+Jan 2022 at [Cognitive Machine Learning Group](https://cognitive-ml.fr/), Departement d’Etudes Cognitives, Ecole Normale Supérieure, France.  
