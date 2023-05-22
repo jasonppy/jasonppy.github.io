@@ -24,7 +24,7 @@ contact: pyp [at] utexas [dot] edu
 **Syllable Discovery and Cross-Lingual Generalization in a Visually Grounded, Self-Supervised Speech Model**  
 <u>Puyuan Peng</u>, Shang-Wen Li, Okko Räsänen, Abdelrahman Mohamed, David Harwath  
 *Interspeech, 2023*  
-[code](https://github.com/jasonppy/syllable-discovery)  
+[pdf](https://arxiv.org/abs/2305.11435) [code](https://github.com/jasonppy/syllable-discovery)  
 
 **Style-transfer based Speech and Audio-visual Scene understanding for Robot Action Sequence Acquisition from Videos**  
 Chiori Hori, <u>Puyuan Peng</u>, David Harwath, Xinyu Liu, Kei Ota, Siddarth Jain, Radu Corcodel, Devesh Jha, Diego Romeres, Jonathan Le Roux  
