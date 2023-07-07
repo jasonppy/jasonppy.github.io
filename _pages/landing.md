@@ -29,6 +29,7 @@ contact: pyp [at] utexas [dot] edu
 **Style-transfer based Speech and Audio-visual Scene understanding for Robot Action Sequence Acquisition from Videos**  
 Chiori Hori, <u>Puyuan Peng</u>, David Harwath, Xinyu Liu, Kei Ota, Siddarth Jain, Radu Corcodel, Devesh Jha, Diego Romeres, Jonathan Le Roux  
 *Interspeech, 2023*  
+[pdf](https://arxiv.org/abs/2306.15644)  
 
 **Textless Phrase Structure Induction From Visually-Grounded Speech**  
 Cheng-I Jeff Lai\*, Freda Shi\*, <u>Puyuan Peng*</u>, Yoon Kim, Kevin Gimpel, Shiyu Chang, Yung-Sung Chuang, Saurabhchand Bhati, David Cox, David Harwath, Yang Zhang, Karen Livescu, James Glass  
@@ -37,7 +38,7 @@ Cheng-I Jeff Lai\*, Freda Shi\*, <u>Puyuan Peng*</u>, Yoon Kim, Kevin Gimpel, Sh
 **Zero-shot Video Moment Retrieval With Off-the-Shelf Models**  
 Anuj Diwan\*, <u>Puyuan Peng*</u>, Raymond J. Mooney  
 *Workshop on Transfer Learning for Natural Language Processing, 2022*   
-[pdf](https://arxiv.org/pdf/2211.02178.pdf) [code](https://jasonppy.github.io/)
+[pdf](https://arxiv.org/pdf/2211.02178.pdf)
 
 **Word Discovery in Visually Grounded, Self-Supervised Speech Models**  
 <u>Puyuan Peng</u>, David Harwath  
