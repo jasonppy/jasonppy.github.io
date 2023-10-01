@@ -38,7 +38,7 @@ contact: pyp [at] utexas [dot] edu
     <a href="https://arxiv.org/abs/2305.11435">pdf</a> <a href="https://github.com/jasonppy/syllable-discovery">code</a>
   </li>
 
-    <li>
+  <li>
     <strong>Style-transfer based Speech and Audio-visual Scene understanding for Robot Action Sequence Acquisition from Videos</strong><br>
     Chiori Hori, <u><em>Puyuan Peng</em></u>, David Harwath, Xinyu Liu, Kei Ota, Siddarth Jain, Radu Corcodel, Devesh Jha, Diego Romeres, Jonathan Le Roux<br>
     <em>Interspeech, 2023</em><br>
