@@ -60,12 +60,12 @@ Alan Baade, <u>Puyuan Peng</u>, David Harwath
 *The 2nd Workshop on Self-supervised Learning for Audio and Speech Processing at AAAI, 2022*  
 [pdf](https://arxiv.org/pdf/2202.03543.pdf) [code](https://github.com/jasonppy/FaST-VGS-Family)  
 
-2. **Fast-Slow Transformer for Visually Grounding Speech**  
+2.**Fast-Slow Transformer for Visually Grounding Speech**  
     <u>Puyuan Peng</u>, David Harwath  
     *ICASSP, 2022*  
     [pdf](https://arxiv.org/pdf/2109.08186.pdf) [code](https://github.com/jasonppy/FaST-VGS-Family)
 
-1. **A Correspondence Variational Autoencoder for Unsupervised Acoustic Word Embeddings**  
+1.**A Correspondence Variational Autoencoder for Unsupervised Acoustic Word Embeddings**  
     <u>Puyuan Peng</u>, Herman Kamper, and Karen Livescu  
     *The 1st Workshop on Self-Supervised Learning for Speech and Audio Processing at NeurIPS, 2020*  
     [pdf](https://arxiv.org/abs/2012.02221)
