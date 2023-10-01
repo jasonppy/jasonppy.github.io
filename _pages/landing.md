@@ -3,7 +3,7 @@ redirect_from: /about/
 permalink: /
 ---
 
-Hi! I'm Puyuan Peng, a second year Computer Science PhD student at [UT Austin](https://www.utexas.edu/), working mainly on speech processing and multimodal learning. I'm very fortunate to have [David Harwath](https://www.cs.utexas.edu/~harwath/) as my advisor.
+Hi! I'm Puyuan Peng, a third year Computer Science PhD student at [UT Austin](https://www.utexas.edu/), working mainly on speech processing and multimodal learning. I'm very fortunate to have [David Harwath](https://www.cs.utexas.edu/~harwath/) as my advisor.
 
 In addition to my advisor, I have the pleasure to work with and learn from many amazing senior researchers, including (in chronological order): [Karen Livescu](https://home.ttic.edu/~klivescu/), [Herman Kamper](https://www.kamperh.com/), [Raymond Mooney](https://www.cs.utexas.edu/~mooney/), [James Glass](https://people.csail.mit.edu/jrg/), [Abdelrahman Mohamed](https://scholar.google.com/citations?hl=en&user=tJ_PrzgAAAAJ), [Jonathan Le Roux](https://www.jonathanleroux.org/), [Chiori Hori](https://www.merl.com/people/chori), [Shinji Watanabe](https://sites.google.com/view/shinjiwatanabe), [Shang-Wen Li](https://swdanielli.github.io/), [Okko Räsänen](https://webpages.tuni.fi/specog/index.html), [Hung-yi Lee](https://speech.ee.ntu.edu.tw/~hylee/index.php) etc.
 
