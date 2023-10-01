@@ -5,7 +5,7 @@ permalink: /
 
 Hi! I'm Puyuan Peng, a second year Computer Science PhD student at [UT Austin](https://www.utexas.edu/), working mainly on speech processing and multimodal learning. I'm very fortunate to have [David Harwath](https://www.cs.utexas.edu/~harwath/) as my advisor.
 
-In addition to my advisor, I have the pleasure to work with and learn from many amazing senior researchers, including (in chronological order): [Karen Livescu](https://home.ttic.edu/~klivescu/), [Herman Kamper](https://www.kamperh.com/), [Raymond Mooney](https://www.cs.utexas.edu/~mooney/), [James Glass](https://people.csail.mit.edu/jrg/), [Abdelrahman Mohamed](https://scholar.google.com/citations?hl=en&user=tJ_PrzgAAAAJ), [Jonathan Le Roux](https://www.jonathanleroux.org/), [Chiori Hori](https://www.merl.com/people/chori), [Shinji Watanabe](https://sites.google.com/view/shinjiwatanabe), [Shang-Wen Li](https://swdanielli.github.io/), [Okko Räsänen](https://webpages.tuni.fi/specog/index.html), etc.
+In addition to my advisor, I have the pleasure to work with and learn from many amazing senior researchers, including (in chronological order): [Karen Livescu](https://home.ttic.edu/~klivescu/), [Herman Kamper](https://www.kamperh.com/), [Raymond Mooney](https://www.cs.utexas.edu/~mooney/), [James Glass](https://people.csail.mit.edu/jrg/), [Abdelrahman Mohamed](https://scholar.google.com/citations?hl=en&user=tJ_PrzgAAAAJ), [Jonathan Le Roux](https://www.jonathanleroux.org/), [Chiori Hori](https://www.merl.com/people/chori), [Shinji Watanabe](https://sites.google.com/view/shinjiwatanabe), [Shang-Wen Li](https://swdanielli.github.io/), [Okko Räsänen](https://webpages.tuni.fi/specog/index.html), [Hung-yi Lee](https://speech.ee.ntu.edu.tw/~hylee/index.php)etc.
 
 I have a Master's degree in Statistics from [The University of Chicago](https://stat.uchicago.edu/alumni/ms-alumni/), and a Bachelor's degree in Mathematics from [Beijing Normal University](https://english.bnu.edu.cn/). 
 
@@ -15,6 +15,11 @@ contact: pyp [at] utexas [dot] edu
 
 ## Papers 
 (The asterisk '\*' denotes equal contribution)  
+**AV-SUPERB: A Multi-Task Evaluation Benchmark for Audio-Visual Representation Models**  
+Yuan Tseng, Layne Berry\*, Yi-Ting Chen\*, I-Hsiang Chiu\*, Hsuan-Hao Lin\*, Max Liu\*, <u>Puyuan Peng*</u>, Yi-Jen Shih\*, Hung-Yu Wang\*, Haibin Wu\*, Po-Yao Huang, Chun-Mao Lai, Shang-Wen Li, David Harwath, Yu Tsao, Shinji Watanabe, Abdelrahman Mohamed, Chi-Luen Feng, Hung-yi Lee  
+*Preprint, 2023*  
+[pdf](https://arxiv.org/pdf/2309.10787.pdf) [code](https://github.com/roger-tseng/av-superb) [website](https://av.superbbenchmark.org/)  
+
 
 **Prompting the Hidden Talent of Web-Scale Speech Models for Zero-Shot Task Generalization**  
 <u>Puyuan Peng</u>, Brian Yan, Shinji Watanabe, David Hawarth  
@@ -31,9 +36,9 @@ Chiori Hori, <u>Puyuan Peng</u>, David Harwath, Xinyu Liu, Kei Ota, Siddarth Jai
 *Interspeech, 2023*  
 [pdf](https://arxiv.org/abs/2306.15644)  
 
-**Textless Phrase Structure Induction From Visually-Grounded Speech**  
+**Audio-Visual Neural Syntax Acquisition**  
 Cheng-I Jeff Lai\*, Freda Shi\*, <u>Puyuan Peng*</u>, Yoon Kim, Kevin Gimpel, Shiyu Chang, Yung-Sung Chuang, Saurabhchand Bhati, David Cox, David Harwath, Yang Zhang, Karen Livescu, James Glass  
-*technical report*  
+*ASRU, 2023*  
 
 **Zero-shot Video Moment Retrieval With Off-the-Shelf Models**  
 Anuj Diwan\*, <u>Puyuan Peng*</u>, Raymond J. Mooney  
@@ -55,15 +60,15 @@ Alan Baade, <u>Puyuan Peng</u>, David Harwath
 *The 2nd Workshop on Self-supervised Learning for Audio and Speech Processing at AAAI, 2022*  
 [pdf](https://arxiv.org/pdf/2202.03543.pdf) [code](https://github.com/jasonppy/FaST-VGS-Family)  
 
-**Fast-Slow Transformer for Visually Grounding Speech**  
-<u>Puyuan Peng</u>, David Harwath  
-*ICASSP, 2022*  
-[pdf](https://arxiv.org/pdf/2109.08186.pdf) [code](https://github.com/jasonppy/FaST-VGS-Family)
+2. **Fast-Slow Transformer for Visually Grounding Speech**  
+    <u>Puyuan Peng</u>, David Harwath  
+    *ICASSP, 2022*  
+    [pdf](https://arxiv.org/pdf/2109.08186.pdf) [code](https://github.com/jasonppy/FaST-VGS-Family)
 
-**A Correspondence Variational Autoencoder for Unsupervised Acoustic Word Embeddings**  
-<u>Puyuan Peng</u>, Herman Kamper, and Karen Livescu  
-*The 1st Workshop on Self-Supervised Learning for Speech and Audio Processing at NeurIPS, 2020*  
-[pdf](https://arxiv.org/abs/2012.02221)
+1. **A Correspondence Variational Autoencoder for Unsupervised Acoustic Word Embeddings**  
+    <u>Puyuan Peng</u>, Herman Kamper, and Karen Livescu  
+    *The 1st Workshop on Self-Supervised Learning for Speech and Audio Processing at NeurIPS, 2020*  
+    [pdf](https://arxiv.org/abs/2012.02221)
 
 ## Talks
 May 2022 at [Developmental Intelligence Laboratory](https://www.la.utexas.edu/users/dil/), Department of Psychology, UT Austin, USA  
