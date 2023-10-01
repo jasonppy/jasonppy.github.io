@@ -19,76 +19,76 @@ contact: pyp [at] utexas [dot] edu
 <ol reversed>
   <li>
     <strong>AV-SUPERB: A Multi-Task Evaluation Benchmark for Audio-Visual Representation Models</strong><br>
-    Yuan Tseng, Layne Berry*, Yi-Ting Chen*, I-Hsiang Chiu*, Hsuan-Hao Lin*, Max Liu*, <span style="font-weight: 520;">Puyuan Peng*</span>, Yi-Jen Shih*, Hung-Yu Wang*, Haibin Wu*, Po-Yao Huang, Chun-Mao Lai, Shang-Wen Li, David Harwath, Yu Tsao, Shinji Watanabe, Abdelrahman Mohamed, Chi-Luen Feng, Hung-yi Lee<br>
+    Yuan Tseng, Layne Berry*, Yi-Ting Chen*, I-Hsiang Chiu*, Hsuan-Hao Lin*, Max Liu*, <span style="font-weight: 550;">Puyuan Peng*</span>, Yi-Jen Shih*, Hung-Yu Wang*, Haibin Wu*, Po-Yao Huang, Chun-Mao Lai, Shang-Wen Li, David Harwath, Yu Tsao, Shinji Watanabe, Abdelrahman Mohamed, Chi-Luen Feng, Hung-yi Lee<br>
     <em>Preprint, 2023</em><br>
     <a href="https://arxiv.org/pdf/2309.10787.pdf">pdf</a> <a href="https://github.com/roger-tseng/av-superb">code</a> <a href="https://av.superbbenchmark.org/">website</a>
   </li>
   
   <li>
     <strong>Prompting the Hidden Talent of Web-Scale Speech Models for Zero-Shot Task Generalization</strong><br>
-    <span style="font-weight: 520;">Puyuan Peng</span>, Brian Yan, Shinji Watanabe, David Hawarth<br>
+    <span style="font-weight: 550;">Puyuan Peng</span>, Brian Yan, Shinji Watanabe, David Hawarth<br>
     <em>Interspeech, 2023</em><br>
     <a href="https://arxiv.org/abs/2305.11095">pdf</a> <a href="https://github.com/jasonppy/promptingwhisper">code</a>
   </li>
 
   <li>
     <strong>Syllable Discovery and Cross-Lingual Generalization in a Visually Grounded, Self-Supervised Speech Model</strong><br>
-    <span style="font-weight: 520;">Puyuan Peng</span>, Shang-Wen Li, Okko Räsänen, Abdelrahman Mohamed, David Harwath<br>
+    <span style="font-weight: 550;">Puyuan Peng</span>, Shang-Wen Li, Okko Räsänen, Abdelrahman Mohamed, David Harwath<br>
     <em>Interspeech, 2023</em><br>
     <a href="https://arxiv.org/abs/2305.11435">pdf</a> <a href="https://github.com/jasonppy/syllable-discovery">code</a>
   </li>
 
   <li>
     <strong>Style-transfer based Speech and Audio-visual Scene understanding for Robot Action Sequence Acquisition from Videos</strong><br>
-    Chiori Hori, <span style="font-weight: 520;">Puyuan Peng</span>, David Harwath, Xinyu Liu, Kei Ota, Siddarth Jain, Radu Corcodel, Devesh Jha, Diego Romeres, Jonathan Le Roux<br>
+    Chiori Hori, <span style="font-weight: 550;">Puyuan Peng</span>, David Harwath, Xinyu Liu, Kei Ota, Siddarth Jain, Radu Corcodel, Devesh Jha, Diego Romeres, Jonathan Le Roux<br>
     <em>Interspeech, 2023</em><br>
     <a href="https://arxiv.org/abs/2306.15644">pdf</a>
   </li>
 
   <li>
     <strong>Audio-Visual Neural Syntax Acquisition</strong><br>
-    Cheng-I Jeff Lai*, Freda Shi*, <span style="font-weight: 520;">Puyuan Peng*</span>, Yoon Kim, Kevin Gimpel, Shiyu Chang, Yung-Sung Chuang, Saurabhchand Bhati, David Cox, David Harwath, Yang Zhang, Karen Livescu, James Glass<br>
+    Cheng-I Jeff Lai*, Freda Shi*, <span style="font-weight: 550;">Puyuan Peng*</span>, Yoon Kim, Kevin Gimpel, Shiyu Chang, Yung-Sung Chuang, Saurabhchand Bhati, David Cox, David Harwath, Yang Zhang, Karen Livescu, James Glass<br>
     <em>ASRU, 2023</em><br>
   </li>
 
   <li>
     <strong>Zero-shot Video Moment Retrieval With Off-the-Shelf Models</strong><br>
-    Anuj Diwan*, <span style="font-weight: 520;">Puyuan Peng*</span>, Raymond J. Mooney<br>
+    Anuj Diwan*, <span style="font-weight: 550;">Puyuan Peng*</span>, Raymond J. Mooney<br>
     <em>Workshop on Transfer Learning for Natural Language Processing, 2022</em><br>
     <a href="https://arxiv.org/pdf/2211.02178.pdf">pdf</a>
   </li>
 
   <li>
     <strong>Word Discovery in Visually Grounded, Self-Supervised Speech Models</strong><br>
-    <span style="font-weight: 520;">Puyuan Peng</span>, David Harwath<br>
+    <span style="font-weight: 550;">Puyuan Peng</span>, David Harwath<br>
     <em>Interspeech, 2022</em><br>
     <a href="https://arxiv.org/pdf/2203.15081.pdf">pdf</a> <a href="https://github.com/jasonppy/word-discovery">code</a>
   </li>
 
   <li>
     <strong>MAE-AST: Masked Autoencoding Audio Spectrogram Transformer</strong><br>
-    Alan Baade, <span style="font-weight: 520;">Puyuan Peng</span>, David Harwath<br>
+    Alan Baade, <span style="font-weight: 550;">Puyuan Peng</span>, David Harwath<br>
     <em>Interspeech, 2022</em><br>
     <a href="https://arxiv.org/pdf/2203.16691.pdf">pdf</a> <a href="https://github.com/AlanBaade/MAE-AST-Public">code</a>
   </li>
 
   <li>
     <strong>Self-Supervised Representation Learning for Speech Using Visual Grounding and Masked Language Modeling</strong><br>
-    <span style="font-weight: 520;">Puyuan Peng</span>, David Harwath<br>
+    <span style="font-weight: 550;">Puyuan Peng</span>, David Harwath<br>
     <em>The 2nd Workshop on Self-supervised Learning for Audio and Speech Processing at AAAI, 2022</em><br>
     <a href="https://arxiv.org/pdf/2202.03543.pdf">pdf</a> <a href="https://github.com/jasonppy/FaST-VGS-Family">code</a>
   </li>
 
   <li>
     <strong>Fast-Slow Transformer for Visually Grounding Speech</strong><br>
-    <span style="font-weight: 520;">Puyuan Peng</span>, David Harwath<br>
+    <span style="font-weight: 550;">Puyuan Peng</span>, David Harwath<br>
     <em>ICASSP, 2022</em><br>
     <a href="https://arxiv.org/pdf/2109.08186.pdf">pdf</a> <a href="https://github.com/jasonppy/FaST-VGS-Family">code</a>
   </li>
 
   <li>
     <strong>A Correspondence Variational Autoencoder for Unsupervised Acoustic Word Embeddings</strong><br>
-    <span style="font-weight: 520;">Puyuan Peng</span>, Herman Kamper, and Karen Livescu<br>
+    <span style="font-weight: 550;">Puyuan Peng</span>, Herman Kamper, and Karen Livescu<br>
     <em>The 1st Workshop on Self-Supervised Learning for Speech and Audio Processing at NeurIPS, 2020</em><br>
     <a href="https://arxiv.org/abs/2012.02221">pdf</a>
   </li>
