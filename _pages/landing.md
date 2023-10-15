@@ -28,27 +28,28 @@ contact: pyp [at] utexas [dot] edu
     <strong>Prompting the Hidden Talent of Web-Scale Speech Models for Zero-Shot Task Generalization</strong><br>
     <span style="font-weight: 550;">Puyuan Peng</span>, Brian Yan, Shinji Watanabe, David Hawarth<br>
     <em>Interspeech, 2023</em><br>
-    <a href="https://arxiv.org/abs/2305.11095">pdf</a> <a href="https://github.com/jasonppy/promptingwhisper">code</a>
+    <a href="https://arxiv.org/pdf/2305.11095.pdf">pdf</a> <a href="https://github.com/jasonppy/promptingwhisper">code</a>
   </li>
 
   <li>
     <strong>Syllable Discovery and Cross-Lingual Generalization in a Visually Grounded, Self-Supervised Speech Model</strong><br>
     <span style="font-weight: 550;">Puyuan Peng</span>, Shang-Wen Li, Okko Räsänen, Abdelrahman Mohamed, David Harwath<br>
     <em>Interspeech, 2023</em><br>
-    <a href="https://arxiv.org/abs/2305.11435">pdf</a> <a href="https://github.com/jasonppy/syllable-discovery">code</a>
+    <a href="https://arxiv.org/pdf/2305.11435.pdf">pdf</a> <a href="https://github.com/jasonppy/syllable-discovery">code</a>
   </li>
 
   <li>
     <strong>Style-transfer based Speech and Audio-visual Scene understanding for Robot Action Sequence Acquisition from Videos</strong><br>
     Chiori Hori, <span style="font-weight: 550;">Puyuan Peng</span>, David Harwath, Xinyu Liu, Kei Ota, Siddarth Jain, Radu Corcodel, Devesh Jha, Diego Romeres, Jonathan Le Roux<br>
     <em>Interspeech, 2023</em><br>
-    <a href="https://arxiv.org/abs/2306.15644">pdf</a>
+    <a href="https://arxiv.org/pdf/2306.15644.pdf">pdf</a>
   </li>
 
   <li>
     <strong>Audio-Visual Neural Syntax Acquisition</strong><br>
     Cheng-I Jeff Lai*, Freda Shi*, <span style="font-weight: 550;">Puyuan Peng*</span>, Yoon Kim, Kevin Gimpel, Shiyu Chang, Yung-Sung Chuang, Saurabhchand Bhati, David Cox, David Harwath, Yang Zhang, Karen Livescu, James Glass<br>
     <em>ASRU, 2023</em><br>
+    <a href="https://arxiv.org/pdf/2310.07654.pdf">pdf</a> <a href="https://github.com/jefflai108/AV-NSL">code</a>
   </li>
 
   <li>
@@ -90,7 +91,7 @@ contact: pyp [at] utexas [dot] edu
     <strong>A Correspondence Variational Autoencoder for Unsupervised Acoustic Word Embeddings</strong><br>
     <span style="font-weight: 550;">Puyuan Peng</span>, Herman Kamper, and Karen Livescu<br>
     <em>The 1st Workshop on Self-Supervised Learning for Speech and Audio Processing at NeurIPS, 2020</em><br>
-    <a href="https://arxiv.org/abs/2012.02221">pdf</a>
+    <a href="https://arxiv.org/pdf/2012.02221.pdf">pdf</a>
   </li>
 </ol>
 
