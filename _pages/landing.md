@@ -5,13 +5,13 @@ permalink: /
 
 Hi! I'm Puyuan Peng, a third year Computer Science PhD student at [UT Austin](https://www.utexas.edu/), working mainly on speech processing and multimodal learning. I'm very fortunate to have [David Harwath](https://www.cs.utexas.edu/~harwath/) as my advisor.
 
-In addition to my advisor, I have the pleasure to work with and learn from many amazing senior researchers, including (in chronological order): [Karen Livescu](https://home.ttic.edu/~klivescu/), [Herman Kamper](https://www.kamperh.com/), [Raymond Mooney](https://www.cs.utexas.edu/~mooney/), [James Glass](https://people.csail.mit.edu/jrg/), [Abdelrahman Mohamed](https://scholar.google.com/citations?hl=en&user=tJ_PrzgAAAAJ), [Jonathan Le Roux](https://www.jonathanleroux.org/), [Chiori Hori](https://www.merl.com/people/chori), [Shinji Watanabe](https://sites.google.com/view/shinjiwatanabe), [Shang-Wen Li](https://swdanielli.github.io/), [Okko Räsänen](https://webpages.tuni.fi/specog/index.html), [Hung-yi Lee](https://speech.ee.ntu.edu.tw/~hylee/index.php) etc.
+In addition to my advisor, I have the pleasure to work with and learn from many amazing senior researchers, including (in chronological order): [Karen Livescu](https://home.ttic.edu/~klivescu/), [Raymond Mooney](https://www.cs.utexas.edu/~mooney/), [James Glass](https://people.csail.mit.edu/jrg/), [Abdelrahman Mohamed](https://scholar.google.com/citations?hl=en&user=tJ_PrzgAAAAJ), [Jonathan Le Roux](https://www.jonathanleroux.org/), [Shinji Watanabe](https://sites.google.com/view/shinjiwatanabe), [Shang-Wen Li](https://swdanielli.github.io/), [Hung-yi Lee](https://speech.ee.ntu.edu.tw/~hylee/index.php) etc.
 
 I have a Master's degree in Statistics from [The University of Chicago](https://stat.uchicago.edu/alumni/ms-alumni/), and a Bachelor's degree in Mathematics from [Beijing Normal University](https://english.bnu.edu.cn/). 
 
 In my free time, I try to workout and sing ([here](https://youtu.be/h-7TFc5pBuk) is a funny video).  
 
-contact: pyp [at] utexas [dot] edu  
+contact: pyp@utexas.edu  
 
 ## Papers 
 (The asterisk '\*' denotes equal contribution)  
