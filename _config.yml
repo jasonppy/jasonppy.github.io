@@ -110,6 +110,3 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
-
-stylesheets:
-  - /assets/custom.css
