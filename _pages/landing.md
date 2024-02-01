@@ -9,6 +9,8 @@ In addition to my advisor, I have the pleasure to work with and learn from many 
 
 I have a Master's degree in Statistics from [The University of Chicago](https://stat.uchicago.edu/alumni/ms-alumni/), and a Bachelor's degree in Mathematics from [Beijing Normal University](https://english.bnu.edu.cn/).  
 
+In my free time, I like to workout and sing ([here](https://youtu.be/h-7TFc5pBuk) is a funny video). 
+
 contact: pyp@utexas.edu  
 
 ## Papers 
@@ -152,6 +154,3 @@ Alan Baade, <u>Puyuan Peng</u>, David Harwath
 May 2022 at [Developmental Intelligence Laboratory](https://www.la.utexas.edu/users/dil/), Department of Psychology, UT Austin, USA  
 Jan 2022 at [Karen Livescu Group](https://home.ttic.edu/~klivescu/),  Toyota Technological Institute at Chicago, USA.  
 Jan 2022 at [Cognitive Machine Learning Group](https://cognitive-ml.fr/), Departement d’Etudes Cognitives, Ecole Normale Supérieure, France.  
-
-## Misc
-In my free time, I try to workout and sing ([here](https://youtu.be/h-7TFc5pBuk) is a funny video). 
