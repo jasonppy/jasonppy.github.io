@@ -58,7 +58,7 @@ plugins:
 
 author:
   name             : "Puyuan Peng"
-  avatar           : "./assets/images/resort.PNG"
+  avatar           : "./assets/images/home.JPG"
   bio              : "PhD Student in Computer Science"
   location         : "Austin, TX"
   links:
