@@ -9,7 +9,7 @@ In addition to my advisor, I have the pleasure to work with and learn from many 
 
 I have a Master's degree in Statistics from [The University of Chicago](https://stat.uchicago.edu/alumni/ms-alumni/), and a Bachelor's degree in Mathematics from [Beijing Normal University](https://english.bnu.edu.cn/).  
 
-In the Summer of 2024, I'll be interning at [Meta AI](https://ai.meta.com/), working with [Wei-Ning Hsu](https://scholar.google.com/citations?user=N5HDmqoAAAAJ).
+In the Summer of 2024, I'll be interning at Fundamental AI Research (FAIR) at [Meta](https://ai.meta.com/), working with [Wei-Ning Hsu](https://scholar.google.com/citations?user=N5HDmqoAAAAJ).
 
 In my free time, I like to workout and sing ([here](https://youtu.be/h-7TFc5pBuk) is a funny video). 
 
