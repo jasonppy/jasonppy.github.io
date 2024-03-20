@@ -3,9 +3,9 @@ redirect_from: /about/
 permalink: /
 ---
 
-Hi! I'm Puyuan Peng, a third year Computer Science PhD student at [UT Austin](https://www.utexas.edu/), working mainly on speech processing and multimodal learning. I'm very fortunate to have [David Harwath](https://www.cs.utexas.edu/~harwath/) as my advisor.
+Hi! I'm Puyuan Peng, a third year Computer Science PhD student at [UT Austin](https://www.utexas.edu/). I mainly work on speech/audio recognition, understanding, and generation, usually under multimodal context (e.g. text, vision). 
 
-In addition to my advisor, I have the pleasure to work with and learn from many amazing senior researchers, including (in chronological order): [Karen Livescu (TTIC/UChicago)](https://home.ttic.edu/~klivescu/), [Raymond Mooney (UT)](https://www.cs.utexas.edu/~mooney/), [James Glass (MIT)](https://people.csail.mit.edu/jrg/), [Yoon Kim (MIT)](https://people.csail.mit.edu/yoonkim/), [Abdelrahman Mohamed (Rembrand)](https://scholar.google.com/citations?hl=en&user=tJ_PrzgAAAAJ), [Jonathan Le Roux (MERL)](https://www.jonathanleroux.org/), [Shinji Watanabe (CMU)](https://sites.google.com/view/shinjiwatanabe), [Shang-Wen Li (Meta)](https://swdanielli.github.io/), [Hung-yi Lee (NTU)](https://speech.ee.ntu.edu.tw/~hylee/index.php) etc.
+I'm very fortunate to have [David Harwath](https://www.cs.utexas.edu/~harwath/) as my advisor. In addition to my advisor, I have the pleasure to work with and learn from many amazing senior researchers, including (in chronological order): [Karen Livescu (TTIC/UChicago)](https://home.ttic.edu/~klivescu/), [Raymond Mooney (UT)](https://www.cs.utexas.edu/~mooney/), [James Glass (MIT)](https://people.csail.mit.edu/jrg/), [Yoon Kim (MIT)](https://people.csail.mit.edu/yoonkim/), [Abdelrahman Mohamed (Rembrand)](https://scholar.google.com/citations?hl=en&user=tJ_PrzgAAAAJ), [Jonathan Le Roux (MERL)](https://www.jonathanleroux.org/), [Shinji Watanabe (CMU)](https://sites.google.com/view/shinjiwatanabe), [Hung-yi Lee (NTU)](https://speech.ee.ntu.edu.tw/~hylee/index.php), [Kristen Grauman (UT/Meta)](https://www.cs.utexas.edu/users/grauman/), [Wei-Ning Hsu (Meta)](https://scholar.google.com/citations?user=N5HDmqoAAAAJ&hl=en) etc.
 
 I have a Master's degree in Statistics from [The University of Chicago](https://stat.uchicago.edu/alumni/ms-alumni/), and a Bachelor's degree in Mathematics from [Beijing Normal University](https://english.bnu.edu.cn/).  
 
@@ -19,6 +19,24 @@ contact: pyp@utexas.edu
 (The asterisk '\*' denotes equal contribution)  
 
 <ol reversed>
+  <li>
+    <strong>VoiceCraft: Zero-Shot Speech Editing and Text-to-Speech in the Wild</strong><br>
+    <span style="font-weight: 550;">Puyuan Peng</span>, Po-Yao Huang, Daniel Li, Abdelrahman Mohamed, David Harwath<br>
+    <em>preprint, 2024</em><br>
+    <a href="/assets/pdfs/VoiceCraft.pdf">pdf</a> <a href="https://github.com/jasonppy/VoiceCraft">code</a> <a href="https://jasonppy.github.io/VoiceCraft_web/">website</a>
+  </li>
+  <li>
+    <strong>Action2Sound: Ambient-Aware Generation of Action Sounds from Egocentric Videos</strong><br>
+    Changan Chen*, <span style="font-weight: 550;">Puyuan Peng*</span>, Ami Baid, Sherry Xue, Wei-Ning Hsu, David Harwath, Kristen Grauman<br>
+    <em>preprint, 2024</em><br>
+    <a href="/assets/pdfs/VoiceCraft.pdf">pdf (coming soon)</a> <a href="https://github.com/jasonppy/VoiceCraft">code (coming soon)</a>
+  </li>
+  <li>
+    <strong>BAT: Learning to Reason about Spatial Sounds with Large Language Models</strong><br>
+    Zhisheng Zheng, <span style="font-weight: 550;">Puyuan Peng</span>, Ziyang Ma, Xie Chen, Eunsol Choi, David Harwath<br>
+    <em>preprint, 2024</em><br>
+    <a href="https://arxiv.org/pdf/2402.01591.pdf">pdf</a> <a href="https://github.com/jasonppy/VoiceCraft">code</a> 
+  </li>
   <li>
     <strong>AV-SUPERB: A Multi-Task Evaluation Benchmark for Audio-Visual Representation Models</strong><br>
     Yuan Tseng, Layne Berry*, Yi-Ting Chen*, I-Hsiang Chiu*, Hsuan-Hao Lin*, Max Liu*, <span style="font-weight: 550;">Puyuan Peng*</span>, Yi-Jen Shih*, Hung-Yu Wang*, Haibin Wu*, Po-Yao Huang, Chun-Mao Lai, Shang-Wen Li, David Harwath, Yu Tsao, Shinji Watanabe, Abdelrahman Mohamed, Chi-Luen Feng, Hung-yi Lee<br>
@@ -96,61 +114,6 @@ contact: pyp@utexas.edu
     <a href="https://arxiv.org/pdf/2012.02221.pdf">pdf</a>
   </li>
 </ol>
-
-<!-- **AV-SUPERB: A Multi-Task Evaluation Benchmark for Audio-Visual Representation Models**  
-Yuan Tseng, Layne Berry\*, Yi-Ting Chen\*, I-Hsiang Chiu\*, Hsuan-Hao Lin\*, Max Liu\*, <u>Puyuan Peng*</u>, Yi-Jen Shih\*, Hung-Yu Wang\*, Haibin Wu\*, Po-Yao Huang, Chun-Mao Lai, Shang-Wen Li, David Harwath, Yu Tsao, Shinji Watanabe, Abdelrahman Mohamed, Chi-Luen Feng, Hung-yi Lee  
-*Preprint, 2023*  
-[pdf](https://arxiv.org/pdf/2309.10787.pdf) [code](https://github.com/roger-tseng/av-superb) [website](https://av.superbbenchmark.org/)  
-
-
-**Prompting the Hidden Talent of Web-Scale Speech Models for Zero-Shot Task Generalization**  
-<u>Puyuan Peng</u>, Brian Yan, Shinji Watanabe, David Hawarth  
-*Interspeech, 2023*  
-[pdf](https://arxiv.org/abs/2305.11095) [code](https://github.com/jasonppy/promptingwhisper)
-
-**Syllable Discovery and Cross-Lingual Generalization in a Visually Grounded, Self-Supervised Speech Model**  
-<u>Puyuan Peng</u>, Shang-Wen Li, Okko Räsänen, Abdelrahman Mohamed, David Harwath  
-*Interspeech, 2023*  
-[pdf](https://arxiv.org/abs/2305.11435) [code](https://github.com/jasonppy/syllable-discovery)  
-
-**Style-transfer based Speech and Audio-visual Scene understanding for Robot Action Sequence Acquisition from Videos**  
-Chiori Hori, <u>Puyuan Peng</u>, David Harwath, Xinyu Liu, Kei Ota, Siddarth Jain, Radu Corcodel, Devesh Jha, Diego Romeres, Jonathan Le Roux  
-*Interspeech, 2023*  
-[pdf](https://arxiv.org/abs/2306.15644)  
-
-**Audio-Visual Neural Syntax Acquisition**  
-Cheng-I Jeff Lai\*, Freda Shi\*, <u>Puyuan Peng*</u>, Yoon Kim, Kevin Gimpel, Shiyu Chang, Yung-Sung Chuang, Saurabhchand Bhati, David Cox, David Harwath, Yang Zhang, Karen Livescu, James Glass  
-*ASRU, 2023*  
-
-**Zero-shot Video Moment Retrieval With Off-the-Shelf Models**  
-Anuj Diwan\*, <u>Puyuan Peng*</u>, Raymond J. Mooney  
-*Workshop on Transfer Learning for Natural Language Processing, 2022*   
-[pdf](https://arxiv.org/pdf/2211.02178.pdf)
-
-**Word Discovery in Visually Grounded, Self-Supervised Speech Models**  
-<u>Puyuan Peng</u>, David Harwath  
-*Interspeech, 2022*  
-[pdf](https://arxiv.org/pdf/2203.15081.pdf) [code](https://github.com/jasonppy/word-discovery)  
-
-**MAE-AST: Masked Autoencoding Audio Spectrogram Transformer**  
-Alan Baade, <u>Puyuan Peng</u>, David Harwath  
-*Interspeech, 2022*   
-[pdf](https://arxiv.org/pdf/2203.16691.pdf) [code](https://github.com/AlanBaade/MAE-AST-Public)
-
-**Self-Supervised Representation Learning for Speech Using Visual Grounding and Masked Language Modeling**  
-<u>Puyuan Peng</u>, David Harwath  
-*The 2nd Workshop on Self-supervised Learning for Audio and Speech Processing at AAAI, 2022*  
-[pdf](https://arxiv.org/pdf/2202.03543.pdf) [code](https://github.com/jasonppy/FaST-VGS-Family)  
-
-**Fast-Slow Transformer for Visually Grounding Speech**  
-<u>Puyuan Peng</u>, David Harwath  
-*ICASSP, 2022*  
-[pdf](https://arxiv.org/pdf/2109.08186.pdf) [code](https://github.com/jasonppy/FaST-VGS-Family)
-
-**A Correspondence Variational Autoencoder for Unsupervised Acoustic Word Embeddings**  
-<u>Puyuan Peng</u>, Herman Kamper, and Karen Livescu  
-*The 1st Workshop on Self-Supervised Learning for Speech and Audio Processing at NeurIPS, 2020*  
-[pdf](https://arxiv.org/abs/2012.02221) -->
 
 ## Talks
 May 2022 at [Developmental Intelligence Laboratory](https://www.la.utexas.edu/users/dil/), Department of Psychology, UT Austin, USA  
