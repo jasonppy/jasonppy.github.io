@@ -23,7 +23,7 @@ contact: pyp@utexas.edu
     <strong>VoiceCraft: Zero-Shot Speech Editing and Text-to-Speech in the Wild</strong><br>
     <span style="font-weight: 550;">Puyuan Peng</span>, Po-Yao Huang, Daniel Li, Abdelrahman Mohamed, David Harwath<br>
     <em>preprint, 2024</em><br>
-    <a href="/assets/pdfs/VoiceCraft.pdf">pdf</a> <a href="https://img.shields.io/github/stars/jasonppy/VoiceCraft">code</a> <a href="https://jasonppy.github.io/VoiceCraft_web/">website</a>
+    <a href="/assets/pdfs/VoiceCraft.pdf">pdf</a> <img alt="stars" src="https://img.shields.io/github/stars/jasonppy/VoiceCraft"> <a href="https://jasonppy.github.io/VoiceCraft_web/">website</a>
   </li>
   <li>
     <strong>Action2Sound: Ambient-Aware Generation of Action Sounds from Egocentric Videos</strong><br>
