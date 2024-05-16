@@ -22,14 +22,8 @@ contact: pyp@utexas.edu
   <li>
     <strong>VoiceCraft: Zero-Shot Speech Editing and Text-to-Speech in the Wild</strong><br>
     <span style="font-weight: 550;">Puyuan Peng</span>, Po-Yao Huang, Abdelrahman Mohamed, David Harwath<br>
-    <em>preprint, 2024</em><br>
+    <em>ACL, 2024</em><br>
     <a href="/assets/pdfs/VoiceCraft.pdf">pdf</a> <a href="https://jasonppy.github.io/VoiceCraft_web/">website</a> <a href="https://huggingface.co/spaces/pyp1/VoiceCraft_gradio">interactive demo</a> <a href="https://github.com/jasonppy/VoiceCraft">code</a> <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jasonppy/VoiceCraft">
-  </li>
-  <li>
-    <strong>Action2Sound: Ambient-Aware Generation of Action Sounds from Egocentric Videos</strong><br>
-    Changan Chen*, <span style="font-weight: 550;">Puyuan Peng*</span>, Ami Baid, Sherry Xue, Wei-Ning Hsu, David Harwath, Kristen Grauman<br>
-    <em>preprint, 2024</em><br>
-    <a href="/assets/pdfs/VoiceCraft.pdf">pdf (coming soon)</a> <a href="https://github.com/jasonppy/VoiceCraft">code (coming soon)</a>
   </li>
   <li>
     <strong>BAT: Learning to Reason about Spatial Sounds with Large Language Models</strong><br>
