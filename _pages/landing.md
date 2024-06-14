@@ -35,13 +35,13 @@ contact: pyp@utexas.edu
     <strong>BAT: Learning to Reason about Spatial Sounds with Large Language Models</strong><br>
     Zhisheng Zheng, <span style="font-weight: 550;">Puyuan Peng</span>, Ziyang Ma, Xie Chen, Eunsol Choi, David Harwath<br>
     <em>ICML, 2024</em><br>
-    <a href="https://arxiv.org/pdf/2402.01591.pdf">pdf</a><a href="https://zhishengzheng.com/BAT/">website</a><a href="https://github.com/zszheng147/Spatial-AST">Spatial-AST code</a> <a href="https://github.com/X-LANCE/SLAM-LLM/tree/main/examples/seld_spatialsoundqa">BAT code</a> 
+    <a href="https://arxiv.org/pdf/2402.01591.pdf">pdf</a> <a href="https://zhishengzheng.com/BAT/">website</a> <a href="https://github.com/zszheng147/Spatial-AST">Spatial-AST code</a> <a href="https://github.com/X-LANCE/SLAM-LLM/tree/main/examples/seld_spatialsoundqa">BAT code</a> 
   </li>
   <li>
     <strong>Neural Codec Language Models for Disentangled and Textless Voice Conversion</strong><br>
     Alan Baade, <span style="font-weight: 550;">Puyuan Peng</span>, David Harwath<br>
     <em>Interspeech, 2024</em><br>
-    <a href="/assets/pdfs/textless_NCLM.pdf">pdf</a><a href="https://github.com/AlanBaade/TextlessVoiceConversionNDU">code</a>
+    <a href="/assets/pdfs/textless_NCLM.pdf">pdf</a> <a href="https://github.com/AlanBaade/TextlessVoiceConversionNDU">code</a>
   </li>
   <li>
     <strong>AV-SUPERB: A Multi-Task Evaluation Benchmark for Audio-Visual Representation Models</strong><br>
