@@ -122,6 +122,7 @@ contact: pyp@utexas.edu
 </ol>
 
 ## Talks
+May 2024 at [Meta AI](https://ai.meta.com/meta-ai/), New York, USA
 May 2022 at [Developmental Intelligence Laboratory](https://www.la.utexas.edu/users/dil/), Department of Psychology, UT Austin, USA  
 Jan 2022 at [Karen Livescu Group](https://home.ttic.edu/~klivescu/),  Toyota Technological Institute at Chicago, USA.  
 Jan 2022 at [Cognitive Machine Learning Group](https://cognitive-ml.fr/), Departement d’Etudes Cognitives, Ecole Normale Supérieure, France.  
