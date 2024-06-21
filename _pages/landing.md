@@ -3,13 +3,11 @@ redirect_from: /about/
 permalink: /
 ---
 
-Hi! I'm Puyuan Peng, a third year Computer Science PhD student at [UT Austin](https://www.utexas.edu/). I mainly work on speech/audio recognition, understanding, and generation, usually under multimodal context (e.g. text, vision). **I'll be graduating in the Spring of 2025 and on the job market, please reach out if interested!**
+Hi! I'm Puyuan Peng, a third year Computer Science PhD student at [UT Austin](https://www.utexas.edu/), and Research Scientist Intern at FAIR at [Meta](https://ai.meta.com/) NYC. I mainly work on speech/audio recognition, understanding, and generation, usually under multimodal context (e.g. text, vision). **I'll be graduating in the Spring of 2025 and on the job market, please reach out if interested!**
 
 I'm very fortunate to have [David Harwath](https://www.cs.utexas.edu/~harwath/) as my advisor. In addition to my advisor, I have the pleasure to work with and learn from many amazing senior researchers, including (in chronological order): [Karen Livescu (TTIC/UChicago)](https://home.ttic.edu/~klivescu/), [Raymond Mooney (UT)](https://www.cs.utexas.edu/~mooney/), [James Glass (MIT)](https://people.csail.mit.edu/jrg/), [Yoon Kim (MIT)](https://people.csail.mit.edu/yoonkim/), [Abdelrahman Mohamed (Rembrand)](https://scholar.google.com/citations?hl=en&user=tJ_PrzgAAAAJ), [Jonathan Le Roux (MERL)](https://www.jonathanleroux.org/), [Shinji Watanabe (CMU)](https://sites.google.com/view/shinjiwatanabe), [Hung-yi Lee (NTU)](https://speech.ee.ntu.edu.tw/~hylee/index.php), [Kristen Grauman (UT/Meta)](https://www.cs.utexas.edu/users/grauman/), [Wei-Ning Hsu (Meta)](https://scholar.google.com/citations?user=N5HDmqoAAAAJ&hl=en) etc.
 
 I have a Master's degree in Statistics from [The University of Chicago](https://stat.uchicago.edu/alumni/ms-alumni/), and a Bachelor's degree in Mathematics from [Beijing Normal University](https://english.bnu.edu.cn/).  
-
-Start from the Summer of 2024, I'm interning at FAIR at [Meta](https://ai.meta.com/), working with [Wei-Ning Hsu](https://scholar.google.com/citations?user=N5HDmqoAAAAJ).
 
 In my free time, I like to workout and sing. 
 
