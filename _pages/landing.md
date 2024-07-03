@@ -28,7 +28,7 @@ contact: pyp@utexas.edu
     <li>
     <strong>Action2Sound: Ambient-Aware Generation of Action Sounds from Egocentric Videos</strong><br>
     Changan Chen*, <span style="font-weight: 550;">Puyuan Peng*</span>, Ami Baid, Zihui Xue, Wei-Ning Hsu, David Harwath, Kristen Grauman<br>
-    <em>ECCV, 2024</em><br>
+    <em>Preprint, 2024</em><br>
     <a href="/assets/pdfs/Action2Sound.pdf">pdf</a>
   </li>
   <li>
