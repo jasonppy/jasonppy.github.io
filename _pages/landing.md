@@ -3,7 +3,7 @@ redirect_from: /about/
 permalink: /
 ---
 
-Hi! I'm Puyuan Peng, a third year Computer Science PhD student at [UT Austin](https://www.utexas.edu/). I mainly work on speech/audio recognition, understanding, and generation, usually under multimodal context (e.g. text, vision). **I'll be graduating in the Spring of 2025 and on the job market, please reach out if interested!**
+Hi! I'm Puyuan Peng, a third year Computer Science PhD student at [UT Austin](https://www.utexas.edu/). I mainly work on speech/audio recognition, understanding, and generation, usually under multimodal context (e.g. text, vision). I have first-authored publication in ICASSP/Interspeech/ACL/ECCV. **I'll be graduating in the Spring of 2025 and on the job market, please reach out if interested!**
 
 I'm very fortunate to have [David Harwath](https://www.cs.utexas.edu/~harwath/) as my advisor. In addition to my advisor, I have the pleasure to work with and learn from many amazing senior researchers, including (in chronological order): [Karen Livescu (TTIC/UChicago)](https://home.ttic.edu/~klivescu/), [Raymond Mooney (UT)](https://www.cs.utexas.edu/~mooney/), [James Glass (MIT)](https://people.csail.mit.edu/jrg/), [Yoon Kim (MIT)](https://people.csail.mit.edu/yoonkim/), [Abdelrahman Mohamed (Rembrand)](https://scholar.google.com/citations?hl=en&user=tJ_PrzgAAAAJ), [Jonathan Le Roux (MERL)](https://www.jonathanleroux.org/), [Shinji Watanabe (CMU)](https://sites.google.com/view/shinjiwatanabe), [Hung-yi Lee (NTU)](https://speech.ee.ntu.edu.tw/~hylee/index.php), [Kristen Grauman (UT/Meta)](https://www.cs.utexas.edu/users/grauman/), [Wei-Ning Hsu (Meta)](https://scholar.google.com/citations?user=N5HDmqoAAAAJ&hl=en) etc.
 
@@ -28,7 +28,7 @@ contact: pyp@utexas.edu
     <li>
     <strong>Action2Sound: Ambient-Aware Generation of Action Sounds from Egocentric Videos</strong><br>
     Changan Chen*, <span style="font-weight: 550;">Puyuan Peng*</span>, Ami Baid, Zihui Xue, Wei-Ning Hsu, David Harwath, Kristen Grauman<br>
-    <em>Preprint, 2024</em><br>
+    <em>ECCV, 2024</em><br>
     <a href="/assets/pdfs/Action2Sound.pdf">pdf</a>
   </li>
   <li>
