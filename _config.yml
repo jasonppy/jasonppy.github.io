@@ -60,7 +60,7 @@ author:
   name             : "Puyuan Peng"
   avatar           : "./assets/images/wood.jpg"
   bio              : "PhD Student in Computer Science"
-  location         : "New York, NY"
+  location         : "Austin, TX"
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
