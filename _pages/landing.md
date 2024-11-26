@@ -13,10 +13,10 @@ I have published first-authored papers on speech & audio recognition and generat
 
 **Research Highlights**:
 
-- [VoiceCraft (ACL2024)](https://arxiv.org/pdf/2403.16973), the zero-shot TTS and Speech Editing model, garnered **7.5k stars** on [GitHub](https://github.com/jasonppy/VoiceCraft) within just five months of its release, trending globally #1.
+- [VoiceCraft (ACL2024)](https://arxiv.org/pdf/2403.16973), the zero-shot TTS and Speech Editing model, garnered **7.7k stars** on [GitHub](https://github.com/jasonppy/VoiceCraft) within just five months of its release, trending globally #1.
 - [Audio-Visual Latent Diffusion Model (ECCV2024)](https://arxiv.org/pdf/2406.09272) generates realistic action sounds for silent egocentric videos and demonstrates zero-shot transfer capabilities in VR games.
 - [PromptingWhisper (Interspeech2023)](https://arxiv.org/abs/2305.11095) pioneered the application of prompt-based techniques to large speech models for zero-shot tasks such as audio-visual speech recognition and speech translation without fine-tuning.
-- Visually Grounded Speech Research ([Interspeech2023](https://arxiv.org/abs/2305.11435), [2022](https://arxiv.org/pdf/2203.15081.pdf), [ICASSP2022](https://arxiv.org/pdf/2109.08186.pdf), [ASRU2023](https://arxiv.org/abs/2310.07654), [AAAIW2022](https://arxiv.org/pdf/2202.03543.pdf)) not only sets state-of-the-art performance in speech-image retrieval, zero-resource speech recognition, and data-efficient representation learning but also draws parallels to human language development, analyzed at the Annual Meeting of the Cognitive Science Society ([CogSci](https://escholarship.org/content/qt79t028n8/qt79t028n8_noSplash_eb7a0686a1b74591db4bbd04aa34227f.pdf)).
+- Visually Grounded Speech Research ([Interspeech2023](https://arxiv.org/abs/2305.11435), [2022](https://arxiv.org/pdf/2203.15081.pdf), [ICASSP2022](https://arxiv.org/pdf/2109.08186.pdf), [ASRU2023](https://arxiv.org/abs/2310.07654)) not only sets state-of-the-art performance in speech-image retrieval, zero-resource speech recognition, and data-efficient representation learning but also draws parallels to human language development, analyzed at the Annual Meeting of the Cognitive Science Society ([CogSci](https://escholarship.org/content/qt79t028n8/qt79t028n8_noSplash_eb7a0686a1b74591db4bbd04aa34227f.pdf)).
 
 
 In addition to my advisor, I have the pleasure to work with and learn from many amazing senior researchers, including (in chronological order): [Karen Livescu (TTIC/UChicago)](https://home.ttic.edu/~klivescu/), [Raymond Mooney (UT)](https://www.cs.utexas.edu/~mooney/), [James Glass (MIT)](https://people.csail.mit.edu/jrg/), [Yoon Kim (MIT)](https://people.csail.mit.edu/yoonkim/), [Abdelrahman Mohamed (Rembrand)](https://scholar.google.com/citations?hl=en&user=tJ_PrzgAAAAJ), [Jonathan Le Roux (MERL)](https://www.jonathanleroux.org/), [Shinji Watanabe (CMU)](https://sites.google.com/view/shinjiwatanabe), [Hung-yi Lee (NTU)](https://speech.ee.ntu.edu.tw/~hylee/index.php), [Kristen Grauman (UT/Meta)](https://www.cs.utexas.edu/users/grauman/), [Wei-Ning Hsu (Meta)](https://scholar.google.com/citations?user=N5HDmqoAAAAJ&hl=en) etc.
@@ -61,7 +61,18 @@ contact: pyp@utexas.edu
     <em>ICASSP, 2024</em><br>
     <a href="https://arxiv.org/pdf/2309.10787.pdf">pdf</a> <a href="https://github.com/roger-tseng/av-superb">code</a> <a href="https://av.superbbenchmark.org/">website</a>
   </li>
-  
+  <li>
+  <strong>Dynamic-superb phase-2: A collaboratively expanding benchmark for measuring the capabilities of spoken language models with 180 tasks</strong><br>
+  Chien-yu Huang and 78 authors including Puyuan Peng<br>
+  <em>arXiv, 2024</em><br>
+  <a href="https://arxiv.org/pdf/2411.05361">pdf</a>
+  </li>
+  <li>
+  <strong>SyllableLM: Learning Coarse Semantic Units for Speech Language Models</strong><br>
+  Alan Baade, <span style="font-weight: 550;">Puyuan Peng</span>, David Harwath<br>
+  <em>arXiv, 2024</em><br>
+  <a href="https://arxiv.org/pdf/2410.04029">pdf</a>
+  </li>
   <li>
     <strong>Prompting the Hidden Talent of Web-Scale Speech Models for Zero-Shot Task Generalization</strong><br>
     <span style="font-weight: 550;">Puyuan Peng</span>, Brian Yan, Shinji Watanabe, David Hawarth<br>
