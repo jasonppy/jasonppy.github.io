@@ -5,7 +5,7 @@ permalink: /
 
 <!-- Hi! I'm Puyuan Peng, a third year Computer Science PhD student at [UT Austin](https://www.utexas.edu/), and Research Scientist Intern at FAIR at [Meta](https://ai.meta.com/) NYC. I mainly work on speech/audio recognition, understanding, and generation, usually under multimodal context (e.g. text, vision). I have first-authored publication in ICASSP/Interspeech/ACL/ECCV. **I'll be graduating in the Spring of 2025 and on the job market, please reach out if interested!** -->
 
-I'm a 4th year (final year) PhD student at [UT Austin](https://www.utexas.edu/) under [David Harwath](https://www.cs.utexas.edu/~harwath/) and part-time student researcher at [FAIR, Meta]((https://ai.meta.com/)) under [Wei-Ning Hsu (Meta)](https://scholar.google.com/citations?user=N5HDmqoAAAAJ&hl=en) **I'll be graduating in May 2025 and on the job market, please reach out if interested!** 
+Hi! I'm Puyuan Peng (彭浦源), a 4th year (final year) PhD student at [UT Austin](https://www.utexas.edu/) under [David Harwath](https://www.cs.utexas.edu/~harwath/) and part-time student researcher at [FAIR, Meta]((https://ai.meta.com/)) under [Wei-Ning Hsu](https://scholar.google.com/citations?user=N5HDmqoAAAAJ&hl=en) **I'll be graduating in May 2025 and on the job market, please reach out if interested!** 
 I have published first-authored papers on speech & audio recognition and generation in Interspeech/ICASSP/ACL/ECCV. In particular, the tasks I have published on include:
 
 1. **Generation**: Text-to-Speech, Speech Editing, Video-to-Audio
