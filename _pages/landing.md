@@ -2,9 +2,6 @@
 redirect_from: /about/
 permalink: /
 ---
-
-<!-- Hi! I'm Puyuan Peng, a third year Computer Science PhD student at [UT Austin](https://www.utexas.edu/), and Research Scientist Intern at FAIR at [Meta](https://ai.meta.com/) NYC. I mainly work on speech/audio recognition, understanding, and generation, usually under multimodal context (e.g. text, vision). I have first-authored publication in ICASSP/Interspeech/ACL/ECCV. **I'll be graduating in the Spring of 2025 and on the job market, please reach out if interested!** -->
-
 Hi! I'm Puyuan Peng (彭浦源), a 4th year (final year) PhD student at [UT Austin](https://www.utexas.edu/) advised by [David Harwath](https://www.cs.utexas.edu/~harwath/).
 I mainly work on speech & audio recognition and generation, including:
 
@@ -31,6 +28,18 @@ contact: pyp@utexas.edu
 (The asterisk '\*' denotes equal contribution)  
 
 <ol reversed>
+  <li>
+  <strong>Dynamic-superb phase-2: A collaboratively expanding benchmark for measuring the capabilities of spoken language models with 180 tasks</strong><br>
+  Chien-yu Huang and 78 authors including <span style="font-weight: 550;">Puyuan Peng</span><br>
+  <em>ICLR, 2025</em><br>
+  <a href="https://arxiv.org/pdf/2411.05361">pdf</a>
+  </li>
+  <li>
+  <strong>SyllableLM: Learning Coarse Semantic Units for Speech Language Models</strong><br>
+  Alan Baade, <span style="font-weight: 550;">Puyuan Peng</span>, David Harwath<br>
+  <em>ICLR, 2025</em><br>
+  <a href="https://arxiv.org/pdf/2410.04029">pdf</a>
+  </li>
   <li>
     <strong>VoiceCraft: Zero-Shot Speech Editing and Text-to-Speech in the Wild</strong><br>
     <span style="font-weight: 550;">Puyuan Peng</span>, Po-Yao Huang, Shang-Wen Li, Abdelrahman Mohamed, David Harwath<br>
@@ -60,18 +69,6 @@ contact: pyp@utexas.edu
     Yuan Tseng, Layne Berry*, Yi-Ting Chen*, I-Hsiang Chiu*, Hsuan-Hao Lin*, Max Liu*, <span style="font-weight: 550;">Puyuan Peng*</span>, Yi-Jen Shih*, Hung-Yu Wang*, Haibin Wu*, Po-Yao Huang, Chun-Mao Lai, Shang-Wen Li, David Harwath, Yu Tsao, Shinji Watanabe, Abdelrahman Mohamed, Chi-Luen Feng, Hung-yi Lee<br>
     <em>ICASSP, 2024</em><br>
     <a href="https://arxiv.org/pdf/2309.10787.pdf">pdf</a> <a href="https://github.com/roger-tseng/av-superb">code</a> <a href="https://av.superbbenchmark.org/">website</a>
-  </li>
-  <li>
-  <strong>Dynamic-superb phase-2: A collaboratively expanding benchmark for measuring the capabilities of spoken language models with 180 tasks</strong><br>
-  Chien-yu Huang and 78 authors including Puyuan Peng<br>
-  <em>arXiv, 2024</em><br>
-  <a href="https://arxiv.org/pdf/2411.05361">pdf</a>
-  </li>
-  <li>
-  <strong>SyllableLM: Learning Coarse Semantic Units for Speech Language Models</strong><br>
-  Alan Baade, <span style="font-weight: 550;">Puyuan Peng</span>, David Harwath<br>
-  <em>arXiv, 2024</em><br>
-  <a href="https://arxiv.org/pdf/2410.04029">pdf</a>
   </li>
   <li>
     <strong>Prompting the Hidden Talent of Web-Scale Speech Models for Zero-Shot Task Generalization</strong><br>
