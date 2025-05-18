@@ -2,13 +2,10 @@
 redirect_from: /about/
 permalink: /
 ---
-Hi! I'm Puyuan Peng (彭浦源), a 4th year (final year) PhD student at [UT Austin](https://www.utexas.edu/) advised by [David Harwath](https://www.cs.utexas.edu/~harwath/).
-I mainly work on speech & audio recognition and generation, including:
+Hi! I'm Puyuan Peng (彭浦源), a Research Scientist at Meta, working on speech and audio understanding and generation. I got my PhD in CS from [UT Austin](https://www.utexas.edu/) advised by [David Harwath](https://www.cs.utexas.edu/~harwath/). Master's in Stats from [The University of Chicago](https://stat.uchicago.edu/alumni/ms-alumni/), and Bachelor's in Mathematics from [Beijing Normal University](https://english.bnu.edu.cn/).  
 
-1. **Generation**: Text-to-Speech, Speech Editing, Video-to-Audio
-2. **Recognition**: Automatic Speech Recognition, Speech Translation, Audio-Visual Speech Recognition, Speech-Image Retrieval, Speech Segmentation, Speech Quantization, Speech Representation Learning
 
-**Research Highlights**:
+**PhD Research Highlights**:
 
 - [VoiceCraft (ACL2024)](https://arxiv.org/pdf/2403.16973), the zero-shot TTS and Speech Editing model, garnered **7.7k stars** on [GitHub](https://github.com/jasonppy/VoiceCraft) within just five months of its release, **trending globally #1**.
 - [Audio-Visual Latent Diffusion Model (ECCV2024)](https://arxiv.org/pdf/2406.09272) generates realistic action sounds for silent egocentric videos and demonstrates zero-shot transfer capabilities in VR games.
