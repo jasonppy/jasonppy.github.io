@@ -26,6 +26,22 @@ contact: pyp@utexas.edu
 
 <ol reversed>
   <li>
+  <strong>VoiceStar: Robust Zero-Shot Autoregressive TTS with Duration Control and Extrapolation</strong><br>
+  <span style="font-weight: 550;">Puyuan Peng</span>, Shang-Wen Li, Abdelrahman Mohamed, David Harwath<br>
+  <em>Preprint, 2025</em><br>
+  <a href="/assets/pdfs/VoiceStar.pdf">pdf</a> <a href="https://jasonppy.github.io/VoiceStar_web/">website</a><a href="https://github.com/jasonppy/VoiceStar">code</a> <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jasonppy/VoiceStar">
+  </li>
+  <strong>VoiceCraft-Dub: Automated Video Dubbing with Neural Codec Language Models</strong><br>
+  Kim Sung-Bin, Jeongsoo Choi, <span style="font-weight: 550;">Puyuan Peng</span>, Joon Son Chung, Tae-Hyun Oh, David Harwath<br>
+  <em>Preprint, 2025</em><br>
+  <a href="https://arxiv.org/pdf/2504.02386">pdf</a> <a href="https://voicecraft-dub.github.io/">website</a>
+  </li>
+  <strong>VoiceCraft-Dub: Automated Video Dubbing with Neural Codec Language Models</strong><br>
+  Jordan Voas*, Wei-Cheng Tseng*, Layne Berry, Xixi Hu, <span style="font-weight: 550;">Puyuan Peng</span>, James Stuedemann, David Harwath<br>
+  <em>WACV, 2025</em><br>
+  <a href="https://www.cs.utexas.edu/~ml/papers/voas.wacv25.pdf">pdf</a> <a href="https://github.com/jvoas655/StreamSync">code</a>
+  </li>
+  <li>
   <strong>Dynamic-superb phase-2: A collaboratively expanding benchmark for measuring the capabilities of spoken language models with 180 tasks</strong><br>
   Chien-yu Huang and 78 authors including <span style="font-weight: 550;">Puyuan Peng</span><br>
   <em>ICLR, 2025</em><br>
