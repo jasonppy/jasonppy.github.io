@@ -30,7 +30,7 @@ remote_theme: mmistakes/minimal-mistakes
 permalink: /:categories/:title/
 # paginate: 5 # amount of posts to show
 # paginate_path: /page:num/
-timezone: America/Indiana/Tell_City # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: America/New_York # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 include:
   - _pages
 
@@ -59,11 +59,14 @@ plugins:
 author:
   name             : "Puyuan Peng"
   avatar           : "./assets/images/wood.jpg"
-  bio              : "PhD Student in Computer Science"
-  location         : "Austin, TX"
+  bio              : "Researcher at Meta Superintelligence Lab"
+  location         : "New York City"
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
+    - label: "LinkedIn"
+      icon: fab fa-linkedin
+      url: "https://www.linkedin.com/in/puyuan-peng-a5ab8a29b/"
+    - label: "X"
+      icon: "fab fa-x-twitter"
       url: "https://twitter.com/PuyuanPeng"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
@@ -72,10 +75,14 @@ author:
       icon: "fab fa-fw fa-google"
       url: "https://scholar.google.com/citations?user=2TUruWMAAAAJ&hl=en&oi=ao"
 
+
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
+    - label: "LinkedIn"
+      icon: fab fa-linkedin
+      url: "https://www.linkedin.com/in/puyuan-peng-a5ab8a29b/"
+    - label: "X"
+      icon: "fab fa-x-twitter"
       url: "https://twitter.com/PuyuanPeng"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"

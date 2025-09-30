@@ -38,6 +38,12 @@ contact: pyp@utexas.edu
   <a href="https://arxiv.org/pdf/2504.02386">pdf</a> <a href="https://voicecraft-dub.github.io/">website</a>
   </li>
   <li>
+  <strong>VoiceCraft-X: Unifying Multilingual, Voice-Cloning Speech Synthesis and Speech Editing</strong><br>
+  Zhisheng Zheng, <span style="font-weight: 550;">Puyuan Peng</span>, Anuj Diwan, Cong Phuoc Huynh, Xiaohang Sun, Zhu Liu, Vimal Bhat, David Harwath<br>
+  <em>EMNLP, 2025</em><br>
+  <a href="https://openreview.net/pdf?id=LKhtPZg6ws">pdf</a>
+  </li>
+  <li>
   <strong>Temporally Streaming Audio-Visual Synchronization for Real-World Videos</strong><br>
   Jordan Voas*, Wei-Cheng Tseng*, Layne Berry, Xixi Hu, <span style="font-weight: 550;">Puyuan Peng</span>, James Stuedemann, David Harwath<br>
   <em>WACV, 2025</em><br>
