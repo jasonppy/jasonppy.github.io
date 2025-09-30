@@ -2,7 +2,7 @@
 redirect_from: /about/
 permalink: /
 ---
-Hi! I'm Puyuan Peng (彭浦源), a Research Scientist at Meta, working on speech and audio understanding and generation. I got my PhD in CS from [UT Austin](https://www.utexas.edu/) advised by [David Harwath](https://www.cs.utexas.edu/~harwath/). Master's in Stats from [The University of Chicago](https://stat.uchicago.edu/alumni/ms-alumni/), and Bachelor's in Mathematics from [Beijing Normal University](https://english.bnu.edu.cn/).  
+Hi! I'm Puyuan Peng (彭浦源), a Research Scientist at Meta Superintelligence Lab, working on SpeechLLMs. I got my PhD in CS from [UT Austin](https://www.utexas.edu/) advised by [David Harwath](https://www.cs.utexas.edu/~harwath/). Master's in Stats from [The University of Chicago](https://stat.uchicago.edu/alumni/ms-alumni/), and Bachelor's in Mathematics from [Beijing Normal University](https://english.bnu.edu.cn/).  
 
 
 **PhD Research Highlights**:
