@@ -4,9 +4,6 @@ date: 2025-09-29
 categories:
   - Story
 ---
-
-# PhD in AI – My Experience
-
 In October 2024, I contacted 9 companies for research positions in AI. I received interview invites from 8 of them, finished full interview loops with 6, and got offers from 4. The total market cap of the 4 companies that offered me a research scientist job was $10 trillion by mid-September 2025. I chose Meta.
 
 I couldn’t have imagined this 4 years ago, when I set foot in the CS department at UT Austin, with no prior CS degree and very little research experience.
