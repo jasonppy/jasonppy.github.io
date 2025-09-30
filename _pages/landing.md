@@ -34,7 +34,7 @@ contact: pyp@utexas.edu
   <li>
   <strong>VoiceCraft-Dub: Automated Video Dubbing with Neural Codec Language Models</strong><br>
   Kim Sung-Bin, Jeongsoo Choi, <span style="font-weight: 550;">Puyuan Peng</span>, Joon Son Chung, Tae-Hyun Oh, David Harwath<br>
-  <em>Preprint, 2025</em><br>
+  <em>ICCV, 2025</em><br>
   <a href="https://arxiv.org/pdf/2504.02386">pdf</a> <a href="https://voicecraft-dub.github.io/">website</a>
   </li>
   <li>
